@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>i.fa-solid{font-style:normal;display:inline-block}
+i.fa-graduation-cap::before{content:"🎓"}
+i.fa-chalkboard-user::before{content:"👨‍🏫"}
+i.fa-shield-halved::before{content:"🛡️"}
+i.fa-user::before{content:"👤"}
+i.fa-lock::before{content:"🔒"}
+i.fa-house::before{content:"🏠"}
+i.fa-file-lines::before{content:"📄"}
+i.fa-folder-open::before{content:"📂"}
+i.fa-id-card::before{content:"🪪"}
+i.fa-book-bookmark::before{content:"📖"}
+i.fa-print::before{content:"🖨️"}
+i.fa-user-pen::before{content:"✏️"}
+i.fa-square-poll-vertical::before{content:"📊"}
+i.fa-address-card::before{content:"🪪"}
+i.fa-right-from-bracket::before{content:"🚪"}
+i.fa-magnifying-glass::before{content:"🔍"}
+i.fa-bell::before{content:"🔔"}
+i.fa-circle-check::before{content:"✅"}
+i.fa-arrow-right::before{content:"➜"}
+i.fa-check::before{content:"✓"}
+i.fa-trophy::before{content:"🏆"}
+i.fa-file-shield::before{content:"📑"}
+i.fa-clipboard-check::before{content:"📋"}
+</style>
+<link rel="icon" href="data:image/png;base64,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">
+<title>EDUCATION365 - FCE Osiele Portal Prototype</title>
+<!-- Tailwind CSS for modern styling -->
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<!-- FontAwesome for Icons -->
+
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+brand: {
+blue: '#0083D6',
+dark: '#1E293B',
+sidebar: '#1A2936',
+lightBg: '#F1F5F9'
+}
+}
+}
+}
+}
+</script>
+</head>
+<body class="bg-slate-50 font-sans antialiased text-slate-800 min-h-screen">
+<!-- APP CONTAINER -->
+<div id="app">
+<!-- Views will be dynamically injected here -->
+</div>
+<!-- JAVASCRIPT LOGIC & VIEWS -->
+<script>
+// State Management
+const state = {
+currentView: 'welcome', // 'welcome', 'login', 'dashboard'
+portalType: 'Student', // Student, Lecturer, Admin
+activeTab: 'Overview' // Overview, Academic Status, Result Summary, Outstanding Courses, Eligibility, Confirmation, Clearance, ID Card
+};
+// Render Engine
+function render() {
+const app = document.getElementById('app');
+app.innerHTML = '';
+if (state.currentView === 'welcome') {
+app.innerHTML = renderWelcomeView();
+} else if (state.currentView === 'login') {
+app.innerHTML = renderLoginView();
+} else if (state.currentView === 'dashboard') {
+app.innerHTML = renderDashboardRouter();
+}
+}
+// 1. WELCOME SCREEN VIEW
+function renderWelcomeView() {
+return `
+<div class="min-h-screen flex flex-col md:flex-row w-full">
+<!-- Left Hero Section -->
+<div class="w-full md:w-1/2 bg-white flex flex-col items-center justify-center p-12 border-r border-slate-100">
+<div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 mb-6 flex items-center justify-center w-36 h-36">
+<!-- FCE Osiele Logo representation -->
+<img src="${CREST}" alt="Federal College of Education, Abeokuta crest" class="w-24 h-auto">
+</div>
+<h1 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Welcome to FCE Osiele</h1>
+</div>
+<!-- Right Module Selector Section -->
+<div class="w-full md:w-1/2 bg-slate-50/50 flex flex-col justify-between p-8 md:p-16">
+<div class="max-w-md w-full mx-auto pt-8">
+<h2 class="text-xl font-bold text-slate-900">Select Module</h2>
+<p class="text-sm text-slate-500 mt-1 mb-8">Choose a portal to proceed to your personalized dashboard</p>
+<div class="space-y-4">
+<!-- Student Portal Card -->
+<div onclick="selectPortal('Student')" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200/80 hover:border-brand-blue cursor-pointer transition-all flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-xl bg-emerald-600 flex items-center justify-center text-white text-xl shadow-sm group-hover:scale-105 transition-transform">
+<i class="fa-solid fa-graduation-cap"></i>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 text-base">Student Portal</h3>
+<p class="text-xs text-slate-500">Access course registration, check results, and view your academic profile</p>
+</div>
+</div>
+<!-- Lecturer Portal Card -->
+<div onclick="selectPortal('Lecturer')" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200/80 hover:border-brand-blue cursor-pointer transition-all flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-600 flex items-center justify-center text-xl shadow-sm group-hover:scale-105 transition-transform">
+<i class="fa-solid fa-chalkboard-user"></i>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 text-base">Lecturer Portal</h3>
+<p class="text-xs text-slate-500">Manage your assigned courses, enter student scores, and track academic progress</p>
+</div>
+</div>
+<!-- Clearance Portal Card -->
+<div onclick="selectPortal('Clearance')" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200/80 hover:border-brand-blue cursor-pointer transition-all flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-xl shadow-sm group-hover:scale-105 transition-transform">
+<i class="fa-solid fa-clipboard-check"></i>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 text-base">Clearance Portal</h3>
+<p class="text-xs text-slate-500">Complete departmental and unit clearance, and track approval status</p>
+</div>
+</div>
+<!-- Admin Portal Card -->
+<div onclick="selectPortal('Admin')" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200/80 hover:border-brand-blue cursor-pointer transition-all flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-xl bg-slate-800 text-white flex items-center justify-center text-xl shadow-sm group-hover:scale-105 transition-transform">
+<i class="fa-solid fa-shield-halved"></i>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 text-base">Admin Portal</h3>
+<p class="text-xs text-slate-500">System configurations, global staff management, and master controls</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="text-center text-xs text-slate-400 mt-12">
+&copy; 2026 Federal College of Education, Osiele, Abeokuta.<br>All right reserved.
+</div>
+</div>
+</div>
+`;
+}
+// 2. LOGIN VIEW
+function renderLoginView() {
+return `
+<div class="min-h-screen bg-sky-100 flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Top Full-Width Header Bar -->
+<div class="absolute top-0 left-0 right-0 bg-[#0083D6] py-4 px-6 flex flex-col items-center shadow-md">
+<div class="flex items-center gap-2 text-white font-bold text-xl tracking-wider">
+<img src="${CREST}" alt="" class="h-10 w-auto">
+EDUCATION365
+</div>
+<div class="w-24 h-0.5 bg-sky-300 mt-2"></div>
+<h2 class="text-sky-100 font-medium text-sm mt-3">${state.portalType} Login</h2>
+</div>
+<!-- Login Card Box -->
+<div class="bg-white w-full max-w-md p-8 rounded-xl shadow-lg border border-slate-200 z-10 mt-20">
+<form onsubmit="handleLogin(event)" class="space-y-4">
+<div class="relative">
+<input type="text" placeholder="${state.portalType === 'Student' ? 'Matric No. (e.g. 25/300143)' : 'Staff ID'}" required class="w-full bg-slate-50 border border-slate-200 rounded px-4 py-3 text-sm focus:outline-none focus:border-brand-blue text-slate-700">
+<span class="absolute right-4 top-3.5 text-slate-400"><i class="fa-solid fa-user"></i></span>
+</div>
+<div class="relative">
+<input type="password" placeholder="${state.portalType === 'Student' ? 'Password (your surname)' : 'Password'}" required class="w-full bg-slate-50 border border-slate-200 rounded px-4 py-3 text-sm focus:outline-none focus:border-brand-blue text-slate-700">
+<span class="absolute right-4 top-3.5 text-slate-400"><i class="fa-solid fa-lock"></i></span>
+</div>
+<div class="flex items-center justify-between text-xs pt-1">
+<label class="flex items-center gap-2 text-slate-600 cursor-pointer">
+<input type="checkbox" class="rounded border-slate-300"> Remember Me
+</label>
+<button type="submit" class="bg-[#0083D6] hover:bg-sky-600 text-white font-medium px-6 py-2 rounded text-sm transition-colors shadow-sm">
+Sign in
+</button>
+</div>
+</form>
+<p class="mt-4 text-[11px] text-slate-400 text-center">${loginHint()}</p>
+<div class="mt-8 pt-6 border-t border-slate-100 text-center">
+<p class="text-xs text-slate-500">New Student? Register Here</p>
+<button onclick="handleLogin(event)" class="mt-2 bg-[#0083D6] hover:bg-sky-600 text-white text-xs font-medium px-4 py-1.5 rounded shadow-sm">
+Get Matric No.
+</button>
+</div>
+</div>
+<!-- Bottom Powered By Footer -->
+<div class="absolute bottom-4 bg-[#0083D6] w-full py-2 text-center text-white text-xs shadow-inner">
+Powered By Splashnet Technologies Ltd.
+</div>
+</div>
+`;
+}
+// 3. MAIN DASHBOARD VIEW
+function renderDashboardView() {
+return `
+<div class="flex h-screen overflow-hidden bg-slate-50">
+<!-- SIDEBAR -->
+<aside class="w-64 bg-[#1A2936] text-slate-300 flex flex-col justify-between hidden md:flex shrink-0">
+<div>
+<!-- Brand Header -->
+<div class="p-4 bg-[#0083D6] flex items-center gap-3 text-white">
+<div class="w-7 h-7 bg-amber-400 rounded-full flex items-center justify-center text-emerald-900 text-xs font-bold">
+<i class="fa-solid fa-graduation-cap"></i>
+</div>
+<span class="font-bold tracking-wide text-sm">EDUCATION365</span>
+</div>
+<!-- Nav Menu -->
+<nav class="mt-4 space-y-1 px-2 text-xs">
+<a href="#" onclick="changeTab('Overview')" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-800 text-slate-300">
+<i class="fa-solid fa-house w-4"></i> Home
+</a>
+<a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-800 text-slate-300">
+<i class="fa-solid fa-file-lines w-4"></i> Course Registration
+</a>
+<a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-800 text-slate-300">
+<i class="fa-solid fa-folder-open w-4"></i> Course Form
+</a>
+<a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-800 text-slate-300">
+<i class="fa-solid fa-id-card w-4"></i> Exam Pass
+</a>
+<a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-800 text-slate-300">
+<i class="fa-solid fa-book-bookmark w-4"></i> O’Level Information
+</a>
+<a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-800 text-slate-300">
+<i class="fa-solid fa-print w-4"></i> Print Bio Data
+</a>
+<a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-800 text-slate-300">
+<i class="fa-solid fa-user-pen w-4"></i> Edit Profile
+</a>
+<a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-800 text-slate-300">
+<i class="fa-solid fa-square-poll-vertical w-4"></i> My Results
+</a>
+<!-- Graduation Accordion / Group -->
+<div class="pt-2 pb-1">
+<div class="px-3 py-1 font-semibold text-slate-400 uppercase tracking-wider text-[10px]">Graduation</div>
+<div class="pl-3 mt-1 space-y-1 border-l border-slate-700 ml-3">
+<a href="#" onclick="changeTab('Overview')" class="block px-2 py-1.5 rounded hover:bg-slate-800 ${state.activeTab === 'Overview' ? 'text-sky-400 font-semibold bg-slate-800/50' : ''}">Overview</a>
+<a href="#" onclick="changeTab('Academic Status')" class="block px-2 py-1.5 rounded hover:bg-slate-800 ${state.activeTab === 'Academic Status' ? 'text-sky-400 font-semibold bg-slate-800/50' : ''}">Academic Status</a>
+<a href="#" onclick="changeTab('Result Summary')" class="block px-2 py-1.5 rounded hover:bg-slate-800 ${state.activeTab === 'Result Summary' ? 'text-sky-400 font-semibold bg-slate-800/50' : ''}">Result Summary</a>
+<a href="#" onclick="changeTab('Outstanding Courses')" class="block px-2 py-1.5 rounded hover:bg-slate-800 ${state.activeTab === 'Outstanding Courses' ? 'text-sky-400 font-semibold bg-slate-800/50' : ''}">Outstanding Courses</a>
+<a href="#" onclick="changeTab('Eligibility')" class="block px-2 py-1.5 rounded hover:bg-slate-800 ${state.activeTab === 'Eligibility' ? 'text-sky-400 font-semibold bg-slate-800/50' : ''}">Eligibility</a>
+<a href="#" onclick="changeTab('Confirmation')" class="block px-2 py-1.5 rounded hover:bg-slate-800 ${state.activeTab === 'Confirmation' ? 'text-sky-400 font-semibold bg-slate-800/50' : ''}">Confirmation</a>
+<a href="#" onclick="changeTab('Clearance')" class="block px-2 py-1.5 rounded hover:bg-slate-800 ${state.activeTab === 'Clearance' ? 'text-sky-400 font-semibold bg-slate-800/50' : ''}">Download</a>
+</div>
+</div>
+<a href="#" onclick="changeTab('ID Card')" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-800 text-slate-300 mt-2">
+<i class="fa-solid fa-address-card w-4"></i> ID Card
+</a>
+</nav>
+</div>
+<!-- Logout / Footer info in Sidebar -->
+<div class="p-4 border-t border-slate-800">
+<button onclick="goToWelcome()" class="w-full bg-slate-800 hover:bg-rose-900/40 text-slate-300 hover:text-rose-300 text-xs py-2 rounded transition-colors flex items-center justify-center gap-2">
+<i class="fa-solid fa-right-from-bracket"></i> Logout Portal
+</button>
+</div>
+</aside>
+<!-- MAIN CONTENT AREA -->
+<div class="flex-1 flex flex-col overflow-hidden">
+<!-- Top Navbar -->
+<header class="bg-[#0083D6] h-16 px-6 flex items-center justify-between shadow-sm shrink-0">
+<div class="relative w-72">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+<i class="fa-solid fa-magnifying-glass text-xs"></i>
+</span>
+<input type="text" placeholder="Search..." class="w-full bg-slate-100/90 rounded-full pl-9 pr-4 py-1.5 text-xs focus:outline-none focus:bg-white text-slate-700">
+</div>
+<div class="flex items-center gap-4">
+<div onclick="changeTab('Notifications')" class="w-8 h-8 rounded-full bg-amber-400/20 text-white flex items-center justify-center cursor-pointer hover:bg-amber-400/30">
+<i class="fa-solid fa-bell text-sm"></i>
+</div>
+<div class="flex items-center gap-3 border-l border-sky-400 pl-4">
+<div class="w-9 h-9 rounded-full bg-amber-400 text-emerald-900 flex items-center justify-center text-xs font-bold border-2 border-white shadow-sm">${me().n.split(' ').map(w => w[0]).slice(0,2).join('')}</div>
+<div class="text-white hidden sm:block">
+<div class="text-xs font-bold leading-tight">${me().n}</div>
+<div class="text-[10px] text-sky-100 opacity-90">Student</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Dynamic Tab Content Viewport -->
+<main class="flex-1 overflow-y-auto p-8">
+${renderTabContent()}
+</main>
+</div>
+</div>
+`;
+}
+// TAB ROUTER FUNCTION
+function renderTabContentOld() {
+switch(state.activeTab) {
+case 'Overview':
+return `
+<div>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight">Graduation Result Confirmation</h1>
+<p class="text-xs text-slate-500 mt-0.5 mb-6">Check your academic completion status and confirm your eligibility for graduation</p>
+<!-- Success Banner -->
+<div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg">
+<i class="fa-solid fa-circle-check"></i>
+</div>
+<div>
+<h3 class="text-sm font-bold text-emerald-700">ELIGIBLE FOR GRADUATION</h3>
+<p class="text-[11px] text-slate-500">You have successfully completed all requirements for your programme</p>
+</div>
+</div>
+</div>
+<!-- Student Info Card -->
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 max-w-4xl">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-6">Student Information</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12 text-sm">
+<div>
+<span class="text-xs text-slate-400 block">Full Name</span>
+<span class="font-bold text-slate-800 text-base">Paul Oloyede Elegbede</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block">Session</span>
+<span class="font-bold text-slate-800 text-base">2025/2026</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block">Matric Number</span>
+<span class="font-bold text-slate-800 text-base">FCE/CS/2021/0487</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block">Department</span>
+<span class="font-bold text-slate-800 text-base">Computer Science Education</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block">Programme</span>
+<span class="font-bold text-slate-800 text-base">Computer Science</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block">Programme Status</span>
+<span class="font-bold text-slate-800 text-base">Final Year</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block">Level</span>
+<span class="font-bold text-slate-800 text-base">300</span>
+</div>
+</div>
+<div class="mt-8">
+<button onclick="changeTab('Academic Status')" class="bg-[#0083D6] hover:bg-sky-600 text-white text-xs font-medium px-5 py-2.5 rounded-lg shadow-sm flex items-center gap-2 transition-colors">
+View Details <i class="fa-solid fa-arrow-right"></i>
+</button>
+</div>
+</div>
+</div>
+`;
+case 'Academic Status':
+return `
+<div>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight">Academic Status</h1>
+<p class="text-xs text-slate-500 mt-0.5 mb-6">Your academic completion status at a glance</p>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 max-w-4xl space-y-6">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Academic Requirements</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-sky-50/70 border border-sky-100 p-4 rounded-xl">
+<span class="text-xs text-slate-500 block">Total Courses</span>
+<span class="text-2xl font-bold text-sky-700 mt-1 block">42</span>
+</div>
+<div class="bg-sky-50/70 border border-sky-100 p-4 rounded-xl">
+<span class="text-xs text-slate-500 block">Courses Passed</span>
+<span class="text-2xl font-bold text-sky-700 mt-1 block">42</span>
+</div>
+<div class="bg-sky-50/70 border border-sky-100 p-4 rounded-xl">
+<span class="text-xs text-slate-500 block">Outstanding Courses</span>
+<span class="text-2xl font-bold text-sky-700 mt-1 block">0</span>
+</div>
+<div class="bg-sky-50/70 border border-sky-100 p-4 rounded-xl">
+<span class="text-xs text-slate-500 block">Carryover Courses</span>
+<span class="text-2xl font-bold text-sky-700 mt-1 block">0</span>
+</div>
+</div>
+<div class="bg-sky-50/70 border border-sky-100 p-4 rounded-xl max-w-xs">
+<span class="text-xs text-slate-500 block">Total Unit Completed</span>
+<span class="text-2xl font-bold text-sky-700 mt-1 block">140</span>
+</div>
+<div class="space-y-2 pt-2">
+<div class="flex justify-between text-xs font-semibold text-slate-700">
+<span>Academic Completion</span>
+<span>100%</span>
+</div>
+<div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+<div class="bg-emerald-600 h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<div class="bg-[#0083D6] text-white p-4 rounded-xl flex items-center gap-3 text-sm font-medium shadow-sm">
+<i class="fa-solid fa-circle-check text-emerald-300 text-lg"></i> All Academic Requirements have been met.
+</div>
+</div>
+</div>
+`;
+case 'Result Summary':
+return `
+<div>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight">Result Summary</h1>
+<p class="text-xs text-slate-500 mt-0.5 mb-6">A breakdown of your results across all semesters</p>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 max-w-4xl space-y-6">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse text-sm">
+<thead>
+<tr class="border-b border-slate-100 text-slate-400 text-xs uppercase bg-slate-50/50">
+<th class="p-3 font-semibold rounded-l-lg">Semester</th>
+<th class="p-3 font-semibold">Courses</th>
+<th class="p-3 font-semibold">Passed</th>
+<th class="p-3 font-semibold">Outstanding</th>
+<th class="p-3 font-semibold rounded-r-lg">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-50 text-slate-700">
+<tr>
+<td class="p-3 font-bold text-sky-700">YEAR 1</td>
+<td class="p-3">12</td>
+<td class="p-3">12</td>
+<td class="p-3">0</td>
+<td class="p-3"><span class="bg-emerald-100 text-emerald-700 text-xs px-3 py-1 rounded-full font-medium">Completed</span></td>
+</tr>
+<tr>
+<td class="p-3 font-bold text-sky-700">YEAR 2</td>
+<td class="p-3">12</td>
+<td class="p-3">12</td>
+<td class="p-3">0</td>
+<td class="p-3"><span class="bg-emerald-100 text-emerald-700 text-xs px-3 py-1 rounded-full font-medium">Completed</span></td>
+</tr>
+<tr>
+<td class="p-3 font-bold text-sky-700">YEAR 3</td>
+<td class="p-3">12</td>
+<td class="p-3">12</td>
+<td class="p-3">0</td>
+<td class="p-3"><span class="bg-emerald-100 text-emerald-700 text-xs px-3 py-1 rounded-full font-medium">Completed</span></td>
+</tr>
+<tr>
+<td class="p-3 font-bold text-sky-700">YEAR 3</td>
+<td class="p-3">12</td>
+<td class="p-3">12</td>
+<td class="p-3">0</td>
+<td class="p-3"><span class="bg-emerald-100 text-emerald-700 text-xs px-3 py-1 rounded-full font-medium">Completed</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="border-t border-slate-100 pt-6">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Final Summary</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center divide-x divide-slate-100">
+<div>
+<span class="text-xs text-slate-400 block">Total Unit</span>
+<span class="text-xl font-bold text-slate-800 mt-1 block">120</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block">Unit Passed</span>
+<span class="text-xl font-bold text-slate-800 mt-1 block">120</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block">Outstanding Unit</span>
+<span class="text-xl font-bold text-slate-800 mt-1 block">120</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block">CGPA</span>
+<span class="text-xl font-bold text-slate-800 mt-1 block">120</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+`;
+case 'Outstanding Courses':
+return `
+<div>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight">Outstanding Courses</h1>
+<p class="text-xs text-slate-500 mt-0.5 mb-6">View any Course(s) you still need to Complete</p>
+<div class="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 max-w-4xl text-center space-y-6">
+<div class="w-20 h-20 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-3xl mx-auto border-4 border-emerald-100 shadow-sm">
+<i class="fa-solid fa-check"></i>
+</div>
+<div>
+<h3 class="text-lg font-bold text-slate-800">No Outstanding Courses</h3>
+<p class="text-xs text-slate-500 mt-1">You have successfully Completed all required courses for your programme</p>
+</div>
+<div class="pt-4">
+<button class="bg-[#0083D6] text-white text-xs font-medium px-8 py-3 rounded-full shadow-sm">
+<i class="fa-solid fa-check mr-2"></i> Outstanding Courses: 0
+</button>
+</div>
+</div>
+</div>
+`;
+case 'Eligibility':
+return `
+<div>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight">Graduation Eligibility</h1>
+<p class="text-xs text-slate-500 mt-0.5 mb-6">Check if you meet all the requirements for graduation</p>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 max-w-4xl space-y-4">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Eligibility Checklist</h3>
+<div class="space-y-3 text-sm">
+<div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200/80 bg-slate-50/50">
+<span class="text-emerald-600 text-lg"><i class="fa-solid fa-circle-check"></i></span>
+<span class="font-medium text-slate-700">Final Examination Completed</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200/80 bg-slate-50/50">
+<span class="text-emerald-600 text-lg"><i class="fa-solid fa-circle-check"></i></span>
+<span class="font-medium text-slate-700">All required courses completed</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200/80 bg-slate-50/50">
+<span class="text-emerald-600 text-lg"><i class="fa-solid fa-circle-check"></i></span>
+<span class="font-medium text-slate-700">No outstanding/carryover courses</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200/80 bg-slate-50/50">
+<span class="text-emerald-600 text-lg"><i class="fa-solid fa-circle-check"></i></span>
+<span class="font-medium text-slate-700">Required credit unit units completed</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200/80 bg-slate-50/50">
+<span class="text-emerald-600 text-lg"><i class="fa-solid fa-circle-check"></i></span>
+<span class="font-medium text-slate-700">Academic results processed</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200/80 bg-slate-50/50">
+<span class="text-emerald-600 text-lg"><i class="fa-solid fa-circle-check"></i></span>
+<span class="font-medium text-slate-700">Departmental requirements satisfied</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200/80 bg-slate-50/50">
+<span class="text-emerald-600 text-lg"><i class="fa-solid fa-circle-check"></i></span>
+<span class="font-medium text-slate-700">Graduation status verified</span>
+</div>
+</div>
+<div class="bg-[#0083D6] text-white p-4 rounded-xl flex items-center justify-between shadow-sm mt-6">
+<div class="flex items-center gap-3">
+<i class="fa-solid fa-trophy text-amber-300 text-2xl"></i>
+<div>
+<div class="font-bold text-sm">YOU ARE ELIGIBLE FOR GRADUATION</div>
+<div class="text-[11px] text-sky-100">All requirements have been successfully met.</div>
+</div>
+</div>
+<button onclick="changeTab('Confirmation')" class="bg-white text-[#0083D6] text-xs font-bold px-4 py-2 rounded shadow-sm hover:bg-sky-50">Confirm Status</button>
+</div>
+</div>
+</div>
+`;
+case 'Confirmation':
+return `
+<div>
+<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 max-w-4xl text-center space-y-6">
+<div class="relative w-24 h-24 mx-auto flex items-center justify-center">
+<div class="w-20 h-20 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-3xl border-4 border-emerald-100 shadow-sm">
+<i class="fa-solid fa-check"></i>
+</div>
+<!-- Confetti decorative icons simulation -->
+<span class="absolute top-0 left-0 w-2 h-2 bg-pink-400 rounded-full"></span>
+<span class="absolute bottom-1 right-2 w-2 h-2 bg-amber-400 rotate-45"></span>
+<span class="absolute top-2 right-1 w-2 h-2 bg-indigo-400 rounded-full"></span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-slate-900">Confirmation Successful!</h3>
+<p class="text-xs text-slate-500 mt-1">Your graduation status has been successfully confirmed.</p>
+</div>
+<div class="bg-sky-50/70 border border-sky-100 p-4 rounded-xl max-w-xl mx-auto grid grid-cols-2 text-left gap-4 text-sm">
+<div>
+<span class="text-xs text-slate-400 block">Confirmation ID</span>
+<span class="font-bold text-slate-800">GRD-2026-004567</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block">Date Confirmed</span>
+<span class="font-bold text-slate-800">21 September 2026</span>
+</div>
+</div>
+<div class="space-y-3 pt-2 max-w-md mx-auto">
+<button class="w-full bg-[#0083D6] hover:bg-sky-600 text-white text-xs font-medium py-3 rounded-lg shadow-sm">
+Download Confirmation
+</button>
+<button onclick="changeTab('Clearance')" class="w-full bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs font-medium py-3 rounded-lg shadow-sm">
+Go to the Clearance Tab
+</button>
+</div>
+</div>
+</div>
+`;
+case 'Clearance':
+case 'ID Card':
+default:
+return `
+<div>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight">${state.activeTab}</h1>
+<p class="text-xs text-slate-500 mt-0.5 mb-6">Manage and view your official student documentation</p>
+<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 max-w-4xl text-center py-16">
+<div class="w-16 h-16 rounded-full bg-sky-50 text-brand-blue flex items-center justify-center text-2xl mx-auto mb-4">
+<i class="fa-solid fa-file-shield"></i>
+</div>
+<h3 class="text-base font-bold text-slate-800">Document Ready</h3>
+<p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Your official clearance or credential document for ${state.activeTab} is available for secure generation and preview.</p>
+<button onclick="alert('Downloading document...')" class="mt-6 bg-[#0083D6] text-white text-xs font-medium px-6 py-2.5 rounded-lg shadow-sm">
+Download Document
+</button>
+</div>
+</div>
+`;
+}
+}
+// CLEARANCE PORTAL VIEW
+// ===== SHARED DATA (from Chapters Three and Four) =====
+const STUDENTS = [
+{m:'25/300131',n:'ADETONA RACHEAL TOYOSI'},{m:'25/300135',n:'AJIBADE ADEJOKE BENEDICTA'},{m:'25/300137',n:'AKINTADE PEACE MOYINOLUWA'},
+{m:'25/300143',n:'ELEGEBEDE PAUL OLOYEDE'},{m:'25/300146',n:'IDRIS FATIMAH ALAGBO'},{m:'25/300149',n:'KAYODE AYODEJI OLUWAFEMI'},
+{m:'25/300151',n:'LAWAL NOAH MUHAMMED'},{m:'25/300175',n:'OGUNSOLA USMAN ADEBAYO'},{m:'25/300047',n:'IDOWU ADURAGBEMI OLAYINKA'}];
+const STAFF = {
+ACA001:{name:'Sample Clearance Officer (Department)',unit:'Department',role:'Clearance Officer'},
+ACA002:{name:'Sample Clearance Officer (Registry)',unit:'Registry',role:'Clearance Officer'},
+REG001:{name:'Sample Registry Officer',unit:'Registry',role:'Registry Officer'},
+ICT001:{name:'Sample System Administrator',unit:'ICT',role:'Administrator/ICT'}};
+const REQS = [{id:1,name:'All required courses passed',unit:'Department'},{id:2,name:'Results intact',unit:'Registry'},{id:3,name:'No outstanding courses',unit:'Department'}];
+const DEPTS = ['Computer Science','Biology','Chemistry','Mathematics'];
+const PEND = {'25/300149':'Met,Met,Pending','25/300151':'Met,Pending,Met','25/300175':'Pending,Met,Pending','25/300047':'Met,Pending,Met'};
+const recs = {}, AUDIT = [], NOTES = [];
+let letterSeq = 0;
+const NOW = () => new Date().toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+const esc = t => String(t).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+const statusOf = r => r.st.includes('Not Met') ? 'Not Eligible' : r.st.every(x => x === 'Met') ? 'Eligible' : 'Pending';
+STUDENTS.forEach(s => {
+recs[s.m] = {st:(PEND[s.m]||'Met,Met,Met').split(','), cm:['','',''], fin:false, letter:null, code:null, finAt:null};
+recs[s.m].st.forEach((x,i) => { if (x === 'Pending') recs[s.m].cm[i] = 'Verification in progress.'; });
+});
+const me = () => STUDENTS.find(s => s.m === (state.matric || '25/300143'));
+const staff = () => STAFF[state.staffId || 'ACA001'];
+const badge = s => `<span class="${s==='Eligible'||s==='Met'?'bg-emerald-100 text-emerald-700':s==='Pending'?'bg-amber-100 text-amber-700':'bg-rose-100 text-rose-700'} text-xs px-3 py-1 rounded-full font-medium whitespace-nowrap">${s}</span>`;
+const ttl = (h,p) => `<h1 class="text-2xl font-bold text-slate-900 tracking-tight">${h}</h1><p class="text-xs text-slate-500 mt-0.5 mb-6">${p}</p>`;
+function loginHint() {
+const er = state.loginError && state.loginError.p === state.portalType ? '<span class="block text-rose-600 font-semibold text-xs mb-2">' + state.loginError.msg + '</span>' : '';
+return er + loginHint2();
+}
+function loginHint2() {
+if (state.portalType === 'Student') return 'Sign in with your matric number. Your password is your surname (e.g. 25/300143 / ELEGEBEDE).';
+if (state.portalType === 'Clearance') return 'Demo staff IDs: ACA001 (Department), ACA002 (Registry unit), REG001 (Registry Officer). Any password.';
+if (state.portalType === 'Admin') return 'Demo staff ID: ICT001. Any password.';
+return '';
+}
+// ===== ACTIONS =====
+function openDept() { state.clView = 'students'; render(); }
+function goView(v) { state.clView = v; render(); }
+function openStudent(m) { state.sel = m; state.clView = 'student'; render(); }
+function saveReq(m, i) {
+const r = recs[m], sel = document.getElementById('sel'+i).value, cm = document.getElementById('cm'+i).value;
+const old = statusOf(r), oldReq = r.st[i];
+r.st[i] = sel; r.cm[i] = cm;
+if (oldReq !== sel) {
+AUDIT.unshift({a:state.staffId, t:'Requirement '+(i+1)+' status changed for '+m, o:oldReq, n:sel, w:NOW()});
+const nw = statusOf(r);
+if (nw !== old) {
+if (nw !== 'Eligible') { r.fin = false; r.letter = null; r.finAt = null; r.cid = null; }
+AUDIT.unshift({a:state.staffId, t:'Overall status recalculated for '+m, o:old, n:nw, w:NOW()});
+statusNotify(m, nw);
+}
+}
+render();
+}
+function finalise(m) {
+const r = recs[m];
+if (staff().role !== 'Registry Officer' || statusOf(r) !== 'Eligible') return;
+r.fin = true; r.finAt = NOW(); letterSeq++;
+r.letter = 'GSL/2026/' + String(letterSeq).padStart(4,'0');
+r.code = 'VC-' + Math.random().toString(16).slice(2,12).toUpperCase();
+AUDIT.unshift({a:state.staffId, t:'Final approval given for '+m, o:'', n:'Finalised', w:r.finAt});
+notify(m, 'Graduation Status Letter available', 'Your graduation eligibility has been approved by the Registry Officer. Your Graduation Status Letter is now available.', true);
+render();
+}
+// ===== STUDENT PORTAL (modelled on the real Education365 portal) =====
+const CREST = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIUAAABsCAIAAADL8+YhAAABWGlDQ1BJQ0MgUHJvZmlsZQAAeJx9kLFLw1AQxr9WpaB1EB0cHDKJQ5SSCro4tBVEcQhVweqUvqapkMZHkiIFN/+Bgv+BCs5uFoc6OjgIopPo5uSk4KLleS+JpCJ6j+N+fO+74zggOW5wbvcDqDu+W1zKK5ulLSX1jAS9IAzm8Zyur0r+rj/j/T703k7LWb///43Biukxqp+UGcZdH0ioxPqezyXvE4+5tBRxS7IV8onkcsjngWe9WCC+JlZYzagQvxCr5R7d6uG63WDRDnL7tOlsrMk5lBNYxA48cNgw0IQCHdk//LOBv4BdcjfhUp+FGnzqyZEiJ5jEy3DAMAOVWEOGUpN3ju53F91PjbWDJ2ChI4S4iLWVDnA2Rydrx9rUPDAyBFy1ueEagdRHmaxWgddTYLgEjN5Qz7ZXzWrh9uk8MPAoxNskkDoEui0hPo6E6B5T8wNw6XwBA6diE8HYWhMAAEviSURBVHic7b1nmFzHcS5cVd0nTNjZnCN2FzkSOZAgEjMpJpEiJYqSrGjJugoOksO9lhzkz762pWtLsq0cSCqQFCNIMIAJTCByznkRNscJ55zuqu/HmYVAyQkyfS9/sB48s7uzs4Mz/Z7urnrrrWq85X+vg3fsbWP0//oC3rE32Tt4vL3sHTzeXvYOHm8vewePt5e9g8fby97B4+1l7+Dx9rJ38Hh72Tt4vL3sHTzeXvYOHm8vewePt5e9g8fby97B4+1l7+Dx9rJ38Hh72Tt4vL3sHTzeXvYOHm8vewePt5e9g8fby97B4+1l7+Dx9rJ38Hh7mf7Pv/SB370SEWXc4ifj75lZRBANoBURFitiBRhARCyAZTbWMoCQjMUvYI6YjYCIWBEjwCIswsQBSCjAlq0VIyAAAMwghq0BjkSYRRBtZAwIkbLGFADIGmIpCAcCJEDMEdgAjRAoAQhMANqAMFiFBoyJCjpgi8ioABCZUUg7irSnHEKFpISRIUQtQgRMWilNrFHbUCF4SgFoYIWAoshD9pBc0kwqAlJAHqIGZAJCIEJCUoQagAgdRCJ0iBQiingiKURUSivlXAQeFxoixo8xHvE3iAioAECEAQSQAQTAAo4/A6K4Ih5gEQZgQAsiAizAIgLAGE9ZYQErEDFYAEEQjO+A4qMCCEWEWZMK2AZEro28yISKGIhYGbGswA3GxlggX8gNjQ6MjJ7q6T080HdydHB0dCgYGDajOSssjoNRJGIlk3Fqa7100i+vqKytb6wo76wsr3USjusmlfIcxyGyIAxCgCQSKEVsUVBAiMhBBCSDBCBKxAXSCAyCAIiIAIigBEgYERBAIREiCQOjICKRIlQXjUeMRDw/4kdEJCJEjGcLII9PHYuICDI+ioCAgA5A/EoGFEAB4fG3jseaBBSCAApijIoFEAAU0CIKAAlEIEAUNgqREUUsoJc0JgSM8vnh0ZGuQwd3nDh2Msz1RNHJkZEBC9Lalm5pzUycmEknK0uSfsov0Y6DilkiEGRL+VxYCIJcoTA0UhgZPbFj567TXXnXc0vLGpOJ1rKyuinT5tXVd6TLykkrKxaBlSEBREVIiMgADADACKIAFCIWPxRgDAwAAKjiM8V/FjAEAAACoP/S/LjQ4vmBiABUxAkIRGB8DgGAIGDxmuKZJCACeOEeJkiAICIITAJKRAExIAiQgBZBALAoAiISAZACj421JsiOne7uOXr85NbX31jvqMHJk8pam52Geq+8vMz3ylwfiBAASIkiQChYU2AjJKA0gohBKSmBskplUZrYVeAvW1pqQggLODoi3T0ne3sPv/ryhq7T+Zq6zrnzL29omFJd3YLkC2gFJMKCxEwgCGAIhQRFtBQXieLNCIBwfuhEAAgAURCQYrR+Ezx+uTpdAMb4I16A1oWYxfc+sJjzf4jxxAV589vHCxSJKBBEoXhuEIHEcw3AIhI4bIVtMJbr6zl7YvOmF7q7dyqvv3kC3fn+8uaaUlezsVYpRABjGQhQAC0QCyIIgihCErDxjoNaoVJogQkREcmCcoRIXAfSJVDfgIi+ZZXNprtOdO/e8U8bn1GVlTNr25ZcMm9ZeUWVECI4AAoQkBSAAbAggEgy/gGLQ3D+R4zX53gdG19s/vP1Bvd//gqif98fkzdj8K+9QuQCHFFE5M14IFjg8WcEgDnGDBVZYSIVRSGoKAqw52zXoYOv7duzzvX6OielJ05MlZWh6zGiEAoJiJUoYiLUioxhrXQUWnKBARgph5Tvj6TgGBYviWVlRBiRh5FAkOOEUqBEISpAhSzMqDAMGZQCpEKewwC7TuYOH+dD+wud7StnzV7V1DbF88uUJlAAYAQsCCl04pvOslWElu34GI4DE6/o4/Ybrlf/1mgD8PiyeMEIX/gD/uqP+OYXCJDEn0eMsAECBBIGEhARY0IT5fpPHXtxw9q+gc21tYVVV5a1NrWgFByHXZ+sYWAGJK2UAWAL2bwzNkrd50aH+od7+4eXXl5V21gSBPj0ur61v9hzqmsEHTVpUtWH3z9txvQ0Mbz4/Onn1nfXVCXbp1U2NWWqK1Rrk0sQiGXHQSAw1iSTmPKlZKrX0oGXXlq5feur69e/kMs1rlh5+8xZl3mpZGjySrvx0i0iSKAQEVErNT4/zo8SygUr9luLx/iQ/isTBS/47b9nLACIAGRRBAFJg1VKKeYoyA92nTm4Zcvzxw88MXdh/ZqrS9OZlFijKasECdBmLRJGVjQye2SZdu0Z/PKfbR0cgIaGdMJTbRP8+ctqrKH1zxz91j8cu+GaqV/588W9w/3f/PozTz15sLVhuptIvrahb9+OseSskieeON4/NHbZ4soPvHdSZYWieJ1XxUWPkNDDtMNYkl9zZenwIuk6FW587e9ee/XHS5fd3DlpQTJVr7VGEiJkZiQaB+LXR+aXz7y1ePyri5W8+VcX4sG/+loAEor3PgZiBhFNoowt5MbOrF//g8NHXpsytfSjn5qQSiFSSAREJCxAYCI4eyafSidLyh1rIhLWpDKpjBZ7xYqp7//QonQqTCUjckbQqg3PnyurT19/Y0tDTVdNFXzpT1YpJyytwuPncqcGR+cvaf70hy8zmZFsYdCDoLJM20KELgkgM4L2jEFHO2JCByMWALTlZZgpxQkd9UcOBa++8u1XX3n2phs/3dQyEVXCWraWHVexYVK/uh78yrC95Xj8B/vHmxkB+vXpggDCBinSYFCQLQ8PDmx+Y92mTfdPnW7ven9tRSUoCFBADAgjE5CHInDqlP37v97V1pH5wCenl6c1i+Ss8St9Srsbt3cP/uOWod5zo0P9v/eFubOmTM73hxmdcLxw+8Ghv/u77SePFTpb/C9+YVkAur+7sG3Tsdc3HUmW6Dmzq+66Y5KtQCepreHI6oN7848+sm/n9nOpRHLJopbVq8ubmhPaEwF2PDBOOHmGmjC5uesE3Pvzz7U2X7J0+YcaGtuU1khA4/7nBZ8ViiHa+A8Xgwfa//Sg/5s27mMUN2kAFAYkATQiAOIgMJA1GFpAY+H0yQPr1/29p0/dfH3ZhImem4qYGQgDA+QqIqaQKUITSiaZqK4p3by9/7oRyfigCByRjCMddand3UOdnZUNl1fX17VM6SxPJoNJUzKvbC2cPZ1qa6/4vT+o+8H3dp/rOTUMqut0cOrM2Mc/dtmc6X7/wJDFKJE2AAAGUJzjx/kf/2F7f2+w5qrJyoXHnziw71jlpz87t6mJgdnmjKsIEAHGJrY7H7qratumTffdd2TFivdcMmu5TlcAaAENKFYiQoWiixsIqvPjc1HzQ35t8flNEbnwTbAYLjKbQhC4GgEYSBXyhefW37d//0OL57uXzGj0lPGSwgikMCjI6S5zrndo8rSS6ozmwGiHkqV2+pya9a+c2r+3v626UlAA0fehvqGk5zSsWL6spDyXzw6eO2ejiuHV17Zu3LXrr7+ydtHizpFC/pVX9y2+tCZVgv09I5WlTiaVrqku72ivcxKhmygYDpDQGFy37ljXmZHPfX7N/IVJ0tjUkvnzL21duPlUQ3OLiAmy6Huu8kRpJjKlpXLZ5TX1k5KbN/1o985nb7j2t2vrpxkmUYxotLYoRqHHFi8MAv879vN/3yyCAkAABgQRGsdFhVGoNQCIWDl9/MALzz8osOXmd5W3tSniECxGLAxgIpaQXn3h9ONrj3/iM7MXLSz3PTTMOslTZlY0NqZ3bx1dOKs64UMYUWjDuubyBx889tWvPpoPDLOpq3Hv/mDn1BmVf/mXS7dv7D+4v6e8zPviFy6dMydVXwNHMmF7c+nDj2x+dC0mENonJe/6rc7mZk9YBNWBQ/1NraVtE1UiVeCIEgRRHmwEYagLY+Ybf78jCORdt3ROn1uutVUea5cnTwprKku3bOq6554vr1z121Onr0TXcT0SCAndC6KR/0d4IKg4TC9eBgqAsBgChaBRJIqiAwc2Pf3kP7R3jKxZVZfwLaFFTZFQEEBgjVJU4ukVqyf94pEjT60919qWqW8kz1O5HDQ1Vk7qLNv0Qm9DRebsueEDB87NXVS5YGHbxz91SToNza1+RYWqqPBSCUfYtDRLe2uN5Rrt6TAfKTYaw1tuabzulta+ITM4FGa782EUVpQ5SqFhjqxxXCmMigkdsWRDb9/uI1UVXFNTkh3znnj4yHPP9bW21v2fr+5YvKz56uvr2zocRHRtVJWR1avKq2uDZ577u56+vuUrbxTHFSBEhxBJvWl8/q/PDznvXxCDBTAIiEggoaPt2Kh9Y9OTW7b+YNlKf86MBrA5cnUkkMvCnl3ZF587PTJUaGwoW3VlZVNL9a23z/7+d7bPW1x9RU2DsXakH/Jjw0sWNh/Ytv25pw9OnVF25/smT5mRrq3zF85vQGAbCTAosmANAqBLJgxdxwmz+YSvxCAiRXljIKou0yUJ8uoyWpNlQyErAd+BFcubv/edPfd898DSZR3HDvfc//N9a67raO+o2r6l+54f75u7uOV9H7h8cPDss09ue+XlqKGuLZUmEhQBjWbmDK+qrvb55374xNrdly9/T3X1VELFGAqCAvf88FxEfP7A761CIBEAoF/nr/6zxgDIgMBCDILACFZYFEpQGHpi7QP7Dt171bV1HW0ucegqZEWjBXpq3emf3news72sJOHv2NzlJtxPfm5RbUPd1/7mxSDIf/rT13SdOPrU4wfr65077pymHcyUpzwfHN+SNorAhAyAaJFQkxIWFgRDoJA0OsCExMLWREJEViJyQFiUiCJkEUJkwwwUhM6WLf3PPHvy5NmRKOLFS1quvKaFbPlffHnd8WO5VIlaurz1xhunlJVGji5UVToKhRiEY4KRrKihEb1+XVdQaLvxxj+uqOk0KtIIChxmRqSLw+P+312JENNe/zU8yAiwYWUtKQK2OY04Ntj39NM/Pnl27Q031jc1EIFVgIgYiTp6XP7gD9YvWjj1tz89WUlw4tDIl/7iYLJk9A/+8IqzZwa/9jcvQyTVVYkbb5iw7NKm0grjpECs1ZosA7OAoIhrjTMyxkODYW9/YXA4GwSRtQq0WKPAOoihgBWRdMItTevyCi9T6pVWUioBClisUQqUqzgUy5ANJRuI0srzFIL+l6/teeWVkx/95NJMaeLZp3d2tCffdVNzMkGeq2xg0SFjQZEKI+N6Kgg4zDobXx88dqLyuht/v6Z5qtKuZsPMSiml9EWsVzH1FFP5vyEYAEAcE5vMlhlI0CE9Onhu7WPfO33u+VvvaG6oJTSBAAshAzLqoYEgypvmxpSmQEG+rd299pbp//KNJ3NjY3PnVd7x3qnAsHRZTUuTo5QBElKE4IRZFtL5vJzrjnbvOb1j14ByUq0T5paUTNSuV1aVKkvUJjOudpMaPeH8SHZgbGw0NzQyNDDYfXagb/BMz9DhVCKaPbti9uzasnLEMFQRI0kqhcm00kRBYIcGDdj8Le9un7vITyVgUudUh6SsRLERG4pydMDq4KHhQs5OnJRxXPE98JS5bHlF7plzTz31j1de+/mGxilhFLquS0QAcnF4CMp/xdUFABAGVCBIxER5FM6N5dY+9t3BkWduv7Oxrg7CoKCR2OrBoRA0OT7UNZSlU/5zTx249LKK6lpNCa2dQBGkHJP2xm55dwMp0FrQWGGygIUCZwe9ndv6Tp0sDPSmM6Wdcxe899obLvGSpYw+i3ZcMjZHLKQ8YkeCyNi8cilCheC7aIHDQhiSDgf6zu7YsvGfv/mikxhqaMAFs1ItLQklgXJYIpt0tC6HT/6P6ULgJ0CMzVQ6bCwwOJ4eyzMHav264Ov/8OrISPSJ35l/zXX15eXWISEdrLmyccMrPQ/d/1e33/4ndQ3t57NKF7Fe/fSzy4mUIv1fybqLBSSwaBnywBzkxl564ZFTJx9Ztbq0tsYkPTBE/f2ycUPfuseOkofv+8iUSdOqn13X9d1v7Jwzp3b5iqlDw6O/eGT/lHb/dz87p6yUQQNoRAAbgg38/YfyO/b2Hj3qLlx45YS2qS0ts0pKGiwTACIZJIMIYknAsWhMIfSRe44eFENVLR2SLjGIDhWi3KDvZYxhBx1jbAD5MwOnDuzbum/Lo/nsqcvXNHdOTtRUoBLDlg0LAGodJ26ARFhBBJgruBtePvdPX907cVLdpGm1jz26feWKhjvfO6mxEUDYMhYC55lneru72266+Y+bmpqKKdf/PB4/+9xyGk8CXzjC/+7y9UvvupiVEmAgoEhwLMyqV19+eO++n1x/Q0VtldVgNEnWJu6978ATD59YuKC5vlEuX9PU0JgOcu7WN/p/+vPtx7vGSsvcFZc1Xn9NZ10NKGLSGBgoFNSenUN79+XzhfaFy66YPfMqP1nGYDWQCCIpQmA2gCEiovWY0Zg895zbue7x1za8cOWdd09cvMRANHqy68ierdkwv/CaW7zaJmRCZnIltAYEIcj1dh967sWfdffubm+zy5c2lJeH4IgJrSa0hjWi8lRkIYoS9/3s4I9+vDfM4eWrOu98/4Ke0wM//O5Lyy+te+9d7Z4LoBCJsjm19omzufzC99z2qZJMnSBdBB4///xyRVqE3ryf/zrBfqGdz90WZQ8MoNARYGuH9+7cs3btX6y6Us+elXJRiAWET/dk/uhPnps/t+G2O9tLy0K00H0iPHFiaNL0GnRpcCz0PKwpQ8/XxlgAzGXx3Gl87fX+IOi8dMUdbZ1z/XRaMSCBACgrFEsllCiloihCQRBRbIf2bH3tvh/1Hzxc0dBy+Sc+YsLhnU890btjf29v35Lb75x++weC6ipCUoZdEgQLiNYQklvI586eO7xn14Yd2x9ZshhmzS8vKyeOIojYcZEtsHGeXHvub/9+54KlU5etanvysddKEvTRj88wgU36uqXVBbBaIYugwp5+fujRcx2tt6xYebfjlfxfjT+ISIwSALbcffb0Cy/808o1JbPmOCCBIJImYyCUIFuIjLVEygIYhk3bR3/+sz2f/lx6/pJUZZUWKyKgFISGBodkw/M9505XLFzw4UvmL0+kSwRdQEAiiZMrikEEgS2x4cgBg/kAXBg4eeKlf/6678qilZfqCM9ufG3L+vV6tNDZOSVKVbYtuVS5ngfAzI7WhMCMgKgczRb8RKKlpX1CR/2MWTNeXP/Q3gNbl6+o6uxMuCpCYGusNZLLGmulvqFizuzEpLYlDz2w7eDBnhWrW7yEMzga9A/k6mqTSQepwNXl7tXXtNx/7xMV5RMumXf1fy8ecRoXxrPrAIDI1uSyo6efefqbzc39kyaXaRWBBWGxJNZiZbmzYG7ls08dKylLrbquIZHEwVFUpICt7xBbAyKgKJuDffvCl18eaGxY+f7fen+mtEFr11p2tCMGkYoUgBBZtogAYFWU79+1Z+djT8xasuC19euszV1y6cqjL26KTvYUTF5cveDOO3t27J4wZ75X0zh0+FB6QosuKWUC0I6QBgACQSIBJPRDY5rbZt98Z/u+3Vuff/YnRw+NrFpVmvRD7RMZvPbmFkyoRx7aRqrmxuumfeS3Zjq+8dzEzl3DDz5waOvmro9+ZNbVV9X6GowJqsrUmtUVL7/8g7Lyuv9ePGIIzusZEJGBWcwrrz5g7O65c+vK0wAsEOswEKwFVxXe8+7JQ73Rj763ecfORjdBx/b1XbasbuqUjETCRrSjhkbdja93HzrgrVrx+Rkz11hKAgIrVuQgkFhGBRJrVwgFUESALY5mdz28tvull7a88VpBoknvvgmtyh49mcxHIfH866/yqtOnTh+/ZN78wsDACz/+7rSrrpq8co2QI4gCSCjMlhAIiEU7bsZy5Jc4lyy4oqlx8ovP3vPDHzxz082tZRXWcyWZ4Wuvr6+v9n/0070Jf++7b5oGUeKBew/c/9Ahcv3pU9sefvBQU31i1txSx7FJI20T5OSpseee+95F4PEbx4DnZVqxNOjEyf1btj1x401VdfVkglArUhoEAUAcBwC5rg4//7vzV25uf+ONE0LyiU/MnLuwMpm0FsgY6jlnHnly2HObP/jB301n2kClBIQUAxhBEXBEoRFWCpBJCQCQkHZEuvYeHTh4tKGmevTMiRmzZtU1dr7xne8mctmcMRXLljXNmr31kYd0frjUd44//UT26L49G9yO2bOdmiYTX7kIocR0JxEGEYh2FCjUtr6p7abbPvfqSy0/+ckPVl9ZNXlyMuWyA8GSRZnKujmF0NlzMPjxD17s7sotWlx34+3zSisy//h/nn7ssa6GtkR9JSnB8lJcubr+nnv2XBQeJCAXFQ+KAGJROWGtBcRsvnfdMz+ct6CqvSONGIgIKowiiwoVAKEYBItcVhZcsSazZtUsCxBKZMmIpoKVQs57/LGjmao7rr32qkxFo4hPiIgW0QgQADBYcDQDILACFIuAYkEgMj1nztU0NVZXeCe7j9V2dp7ddogGh3zFBVdPXr2qb//RcMfujOf0vvLqiWNHZ06duGtgIBga1lX1cWiAwECCIKgQBBytGICYALWFvJv0ll1+p5cqvf/nf3vHezomTkSfUCmZOjFx/DR/9Rubevv4Y59aumRhoqJcmKCyOrNnR8/YcEDVCUS0xnpetHpNy0VHEueVov85CIt/gojMTAhb33jE2p3zFqYBA2NY+65lEkUMYIwgEVtWsY4SQvIih8KEAl8RCJ46wffe1zVx8odvvfPussoOa0sINRIo1ASOAsZxdy5WQcVXagEMCIOMjgw3trebkqR4Lo+O5Q/sksLgaJStaa0Tpfc9/4LO51U23/X663Z4pHHRAvB8ExgkiiVlIALCPO7Bx3S0IlEkWjnGCDjukmW3ffDubz728OjGV7OAvg2ZjG2oSbzr+gmhYXGUSiUGR/jJh449/rODkztqaqpLjAETARKB2LYJ7m+yf/yK+Oo/fPH570eGB/ftfGrB/Kp0wjgKtasH+8N8QafSKpEEQosiDBgUJDcaVlX5ZKzWKJFodEYG4aX1PRMnX7Nk5Q2uTghYVALogpwX/bmERSGKAkQhIGQEQSAApVQylRw+dzZdm0wZGdy/j9j6JKCckpJMeObEWH93Rmk0rLWTS7mR7yfS5dpLMRcJVGEQJAYlsV4KYicYBCIQcR1tRRCwdcKMa6/99CMPfaWmMtk52UERjeGa5fW7Nvc8eN+mjS+VDXSPHdw1uGJ547tvm5hI+QNDIxiamiZNCGGYv4j5cVEzY/xPAABiNamIvPLKi2WpszMnl7hgXYeMke07B//sz1776X0nTp7UkXWNgDHpxx49+8MfHhkcMVZjhBgh9vfr+396YmLnrVdc8QHtpjQqBQASq9usFBPJCkSjIAmgEAAJoiUgBFcAxTY2NRzdv9fpG+ioruk+fmz43AlX0LNu7+Hu3O7tCZtHIAQucHbOvBlHXtumIOFX1LJ2DTNzrCXUFoghXrCZESwqQEJUGj1kRCxoP7pk4bL3vf+vHl83sP8YjRohzWXJ8DMfn37Lde35sUJDU/oLf3Lppz+zOgjgxz8+8LGPP//EUyfHskZpROS33L86L1cdT5EjioA1ZqD/3CuvPPnbd1clvUgRmEIEpJqaKtvbsmsfP/LKK6evvKbuyquajx2xjz9y6obrJ3mejxBZi3mj160/nSm79NLLbiXMaEiANYguIQiIIGPxf4y3WwQEQYkT8xZACYBlAa5oblBJf/fGTRVBIeG7AQcOKsVOfjDbd+BAQthadhzlevrs0cMDQ2bm+34bSkqNBe2SWIFYUwzA45yExDlOcIGZDSjSqCLBCIRa2mcsX/FbL7x4b8UtjnYooamykt91Y+Olq2tQewO92Xvv3/Dayz0By4oV8+cvzHgJzWxc56L0u6LG5aDnFVYXqiVgPJ8hwEoEkSwIxtusicI3Nt0/obOvpsHTPgOBgyqKpKUZP/U/2lavrn/ggWPf//bhJ5/m/NDQrBllV15TkfasCUR5/isb8sMjU9/z3o85aV+xA5YEPRQWYAuowEFGiwDjQmVLQByREKBGhAiZVYhivMaqCcsuPfWde4zJCkVIaIzxFbmEwUhERHkKPPQwwCNHzk28/obqy+bZBIhYFkCtLAKCaBAQsLFyXIgQFKAhxV4s+XRRKWXFTdg586/pOcdPP/mtW25uFc55BK7HZeRs2Zb72t9vZQtLL2+66pq65pZEIoHGiInQpYvhd/9Di2X0sXoFAACUgIhwFOVGRnrPnd0ze16F42aRwDCwsNLKc0ALzFlQ1tIxd8+u9vvu2Z2siO5477zScrRilfYP7Mvt2DJ0512fq6yoQ3CRnOLtIEiKWCxbC5YISAhj7kYBi4BFtACKwRES9gRJqahj7vTu+qT0DmgbIYs4zpAxWmlCADEpVw8XwmHtt195xYw7bnUrqhF0LJBkK4RU3DMFYo09CKAwW0YAx1EAyAioHACDRG6S1lx3/QP3rXt5w9nVa+rIDYQYiY4cGBnoG/5fX7l22hxytXBBH9gRPvfsvo6O9JVXNr6l65VAcelARiBBFEQRo8geP7LN2tOtrc1CEIQsogcGTCFvtadZDFsjRne21Xzmk5c7/ljzBCUQak1nu8KXnutbueKjTU3TgFwUDxFlXLZlrRUlSKwIhS2q2L0SVlKM9sG4gshK0EVyIwhTk6bVrFi57YGflbCxNsxHzOj4SlMQAdiIQJVXTF1x1Yzb74K6OovkIAgIkigAFi5WT0DRiwcUFoa41IANGiBXISOAYrAMRK63etUn7r33T1ra8lOnEBGI2EypKIUafY70kUOj6x7a8doLZyvr1IT2lMhbOj8uMBYSBs0MIKgVb978+Jw5ZaUlgWEAxO4e87d/tfn4yZzSJEoKI9bThACLl9Z/7BOTEh5EDEEER49GJamFM2asIp0AIBZAYERhJGtMVvJ9+SEh0UAAYBFEWEAYhcQRBAORA0DgsjgImsVilG++8aaOy67CfIhuzISSmACsoKdEi3Eo3TShN7ARh6jG0EhkIyTSqOSXpRKECIQkAFZQIRKjw1SukyAosXKVgbRyNDY2L5w//47NG3/R1FSWTLCjaenSqu1bG/7qS2vTpXp4KCwr9d9997Qll9c2NZJ27Fu7XhW/CgIDs0hkwFE00N/b0727rWWipyMGtAz5wJw6nevrg6uuu6yhueqxX6yvqqArr+6YNEmlUiSWAVRY8Ddt6rvh+nclM+VCwmwc5YpYJIhEIrK7Tx/6yTMPZjlvgZFAKK6vEEEg6yIwUEHEAmlmpa0mFsyb9628ZdGUBZ5xEZUYQC6QZgYJkcElBWZMyb88/K1uM0CeCAiLaK2YhYjiGg5EJEQiAlAM5KJDEXZWtd20cE15qhQRwYKrdRiFjnaEaM6cK19/9YneHmlq0AokU0Lvf9+02qru7r5s57TKSxZV1jai77gEnA/MxeZr8d+LPGLvgxEAmY3E+UdrX9nw9KzZFeXloGPnhKWtpeTPv7L6e9/fvnPPVu3NDUzu9g/MW7wk6ZNAFJkILLnPPnOmrf3SpgkdohRgPNkBEQUsogjZUZM91HsopFzRBVUIxdKruL6DkWxcywOgxLANTNLNnCv0BK5YgmQUnN6/Hwa7ifNuc2tZywRATzs0FI7s6z0wQGdRqSBbQAJScaUTAlxQHCEAgCJA5IQj1kyL2FsVgQFrfHSQxUFEtkhSWdVw+3t+58kn/+h9d012nYjAdExyP9zRUjA0kqUd23vX/qKn6/hQRXlyydK6t7a+lot7SFztJ+I4GAa5nTtfaW1LEhixQgyKRWEwaRL9j8/ObG9VTzy8PqGppbGMwChg1yXtqOFh2LG9f8nSm/1kKSlN4JA449spuUIekiYiB0mzcoE0I1kkW4zHMQKKABiJAAkkrqAUw2PMg9nRIy6eKwwce+X+b2/80ddf+9E/rf3618O+Pi05Dk4oOQcyJsJsLTmkPZe0KpY1IQLF+iQEQlSC2oCKyLVeytGKFIHWiiieP/FXBIJJU+eJNB47PoYaSQlzKBIVstG939/xd195bdfWs5mM29+X/Zd/2v4W7x8yXpel4unMpn/gSFll0NDkO64FAxEKgpJAlBPVVsvv//6itZO67vn+trUPbbnzvRNK6lKClkW9sbFvxqyVldWtEvNAsfNPLIAiRCCEpEgRkTAT4ZuCVYklRQiAbFEYAATYKJKajJeOjg6cOJuqbk3BJRWZpGcqz3adbKivIxgd7jvSO/jGEMu8yXVP7xoqcmPkALDwuLMCvxS4QuzEIQGi7/sukR6vrQMEBIpnq9IuW7x02Qfe2PR3k6Y0pxOEBGjUhufPPrWu69O/s3LRghInYUXKv/Mvr7yVeAiQACMiApMQiGYZOXFys+ePJkuqBQyL5ACHz8n+nf3llW7rxLSf5mvfNclzSnq6TyR8V1hAQz6Hp0/h/MWXeMkkiwYQxFiCbQSUADGiACmlteNKAMIiVgSB9PiuSwqAQeJyEkFE5boY2KsXzk8PnnDF5nK9idSk2ddfeWLbXvGTbZdfoipHyB4qBLuyI7B46uLD3WNHhs4BWrYxx4AX5p5/ycvFvDSL5/oECoEIHEYkKSYogdkwK/Ibm+fJ1qau06a9DYmstXj8WKGmNjFvYVNNVW8ENjIjNXX+W4sHgqi4YkCMCAtDoaf/WEkZIlkBsSLdI/iNr23d9tJY0oe7Pta5bHXrnr0njhwfvua6CX5aR2gJqKsrG+bLJkyYKcgMoBkAAyQD6KBoiANRQY3aIUcsCIIIxpljRJSYjozZP2ZAQO0K6462GfPbF7hnLLqnConsAB3c25v94VNPDw31+gvrvexJa/dVVJObKKlombRsesnx1x8zbLBY4fgmrkiKFZpxegqAyE34CAogzhQDC6jiBYnS2jJU19a5btOx43uaW0pSniJSnVPS654LXlp/eMUSXdeSLAS8c3vPxeU/zjOJ/yqliDE7EhczkBFEDvzCUHfHJEy6wKGg0ps3OoeOD//+X67euOXkT+4/+OTT/Wd7+hfNqKgvrXa1KIAAvIMnR2sb55aXdihOYkx9AgEiigsSD4AgkI+uA0jEQIKoRECsESEARwBQaUTLGCIwGAbLs5uanJFBUlEqpY3NH9u15cyZsvd9+HeYw5G+g3s2H5o+SyfSJQ5V9Z7omlpVX5ouGc5FSMqaKGYZAIsFK1hkzIq6ABTxVFKDg8xIcYWXBgECFrSWI0LXCCxdeuOLL+6XS7VEkUPBZZeWHTra8LOfbxk8U/fBj0/3vehjH2t/6/tl4C9dQjbGdnefqa5KcmSVJgE4fTLb3FQ2c+a0hvqGnr58dSN99otLP/+HCyqrPUQQRGPo+InR2bPnO45PSPH2iUgIDsSOP8X3BjrK81yXlIorpnF8EYkHClhEUGlFSrEB102UpcuDnB0eQ4F0rqCGcuar//idY8ePnjp54it/9TfdPWPZvBea9NCoGh1l30t6CQ9AmDnWPI8nfuK7kIp3YLHIRjnKgaJ485eF5oiASI5yEND1vAltU86cyY6OMCJZY0tK8O4PzvnDLy9buKZBp4Q8njil9L8pHoxpLlvIj/T2nE0mJhKAjZhRHdl/ZOCceW7twW0bzyxY0PnRT65Klw4mk2E8moHh0VHuPWtbWicBxvshAxDChSpwFkGRosASBIrJ3vHoIJ4/IhZIAF0REYiM4cB6jW1zdFSVC06wHhgMBtCj0+dOJFwHHddQxmKL9hPVibqm9LTjQ0PFaJF5vJvBr9f9FUlTIu05Hgr+OgWOQCJIiEY4kSppbpl0qut0fWXGcUEDHdp3ct+hseaWqr0HclVVyZKSi+/P8O9YXPuEhMLx3RmODPcxm2RKiURICIabGtTpIyMP/nTdyJgVz/3yHz9R30Af+a32SZ3pWJnV2xvU1zUlE2VxjQgWd0wEUCBxkG6JHBHUirTSIkKEYhGI8Je9HgCAEZnZB0FUEhlzum941CZyfbLxtSO79u473T3mpyqUQuawrDL1ysZ9O/YdXjR/6oL5rdWp9Mm+48PDI+N1mP+mxkxEAEiR8pUTB48QJ6Xhgv2fMZ4yVmD6jPnHj++bO7OUAhEhze7rL577wcFDmZTb3FJaU594y+udAWB8zQIZHDrd2ppRKlboICr47BcvKXxq+thw1NtXOHV6+PDhbH9fQSuMIuNp0pqOHRmc2HGN0iVIFDelwWLvgvPVdsUbVmutHR03N4F4PRm/PcfXd42IgCSsUNEbuzYtnnJJBVd3TLymtu7SIycOXbm8rDBWSKbUHXd9MB+EHe2dNRUZwLoRq149uCs7NkqusLWkNDMDAOIFcBfXABABQu2TA3Enk19RC/L4VSMC+DW1M9Y/kx1bBaUpBgpmzUl/+S+X/+yBU+sePTxv4ZRjp05dHB5vaq3w678t3hQyXoYuY9mB+vpSrUATWitBns8NjDbUek4FJdNlEydVzZtve3qzrc2e55kgilxXHTsysGzJBECHhRH51+py5Xwpj1KaSAPEzSZEBBAQSdgKEgMACBHFbWqAHBrND6zf+tLHrvxQQ4U3NjBcnak5fPhU73D/0FChoaVpQnttfU1dQ009JdOvd+3benAHKGC2iFpEQAQv7IWAVOzVQiBWNCkfnXGAzu9h8QsZhACAMBCE0rISpRwWIoXC4igsrVBtU9LwWKI0OWG458R/x/6BXHRCcCzbm04rACZCC3jo8MB3v3vi85+de+J4z4Ej+Ztu6tizq++hh/b9xR8vTNRqz3XCfJQd42SqDlELCCLJL9M/v3z/eOwVkSIlLHFaCoVhfJ4AIQCIZTYASIggEJKPb+x85fbLbv3xdx6971s/OnNiX8AaXYXahPmINCnBGTNmfuizn9iRPZIzIzrpWDN+5/0bLJGwAKDvJkq8JBZzDXJBzRFAnMSSeOcXz0smk+W5XFRdjmxBgSrkaHCAThw9/c//+IPZc6reWj6xuPERsAUEUEPDve3NmhAiw0g6NHK2m40tOX7i5M7thRtuSESB238uIokVpBy3ZEqmS+POMwI03rKkKFUZX7gEBYjIcRzhWGUQV6Gf55fi+E1YOBaxIQqAFU2G8431tZ/+5CcpylrHy9rQcZFE2ShQxIMj+bLa8tF9Q0CRtfKm/fmC9fDNeICr3aR2i1H5OArjcXrx+pEdBHBVIpkoDyPDIkgSBNGzTx3/4XeOrVnTdMWqtoULK/4b5ofEXTAIwRka6E5MUqTIRgyIhYBD4wSczkVo2S9E6VzQz4LkORbySmMuZ5Xr+X4ChIGIx+OOOMaOfRkAwHGaxNFOkdG9sCkKxTXUhCQgFhBFiJDYFogIQdLpRKF3xAgLsaNdEwXaRiTguIlERlfW18JBEA6BFRKRIvh1x0kIQBAZlWIrrnY95SGJAgVgEXD87gEBQrCA8SWyUtZxfGNGOd73NJSVO7/9iZlLF1XUVGqEt5RvL05ViRl3BCBASwrZMGC8lEJPb/5HP9rV2z10+mThwQcOHTrYhaAsYmRBI4iQIk1EgCxAiITxZlSc8sUBBxFEIFSOLpaoIp7nl2IvT4kwYiSoABUAWyMIXhQYG+YmT+pormgGDPIYKeWSRU8iYQVOYkQKtY0twowA2tHxe0rMPDD/yq4Z0/EA6CjtkBIRwV8vxYhhIWFCsGJJoRIAw6IFCPTiuY1BSL4rhVFjBC8Oj/Oyz38LjuJyISLAgKy0F5osoCZEJK6ocOfNpsH+g54Lzc28c9c2tjJlckYwpzWhZU8pFoBYGgdxgzkChQIoKIARggIpRugOkktawAACgI7luoACYFA5RSdVGECJQWU8DJUfOl6U7O/r/csv/3WYy1oFfsJnwxoMgYoEK1tqP/6Fz8CwyJhjQ8WOVQkEtFAUjBa1PvHgi7UAgugo5WrtqLh8DEhEYk9EAKmoYBbGSIQiwyJWo0IRAAxDfOaZ4zt2DAOzFWa6eDz+k8orEUa06ZIK5mFrxfVQxM6aWfFXf7OEIZnPKjHKEgFnMynjpwwoCQN2Ha8QhrlCFmV8N0KM8yqCsdyNAFBiCS2Qr/2YCACxbBUAYSwcZVHasZElRTYIyfqfvOvTVW6lGQzMkOk52z2WG+4/05sL80CglIrC0HE0EiXKEsHQyHuuuQ19RxLw+Bvrjp7dB2CVo21kAJ3xHAzH8Q0igZDSjuu4JEWeAIqeBRVvCKQ4s8sAoKgQjpJGRaiJcmC0TyVlSddRQRRE/NauVzGjMK5pB6DKivq+vh2AGUQwRgRZ3MSh/b2bXjt39HAuX+BJk5PXXNPWmPRsFCpFQhSG+TAaFowAFY737htPlCLGmZX4PgT03USxNSEh0ngEIoBENoww9gYYK8qrXn7q+dbK1imNEwH9WdNnf/vb3zly4NDzL7zw0CMPj42N1dbW3HrTzStXXF5ZW8Ou6h0b7DnTDz43VdcfPLpT+ciWEZWc1+rHe6RSIGCtVYoUKSFgFoonyXlVLRIIsAChGMPWhpEZTvhlbFkQyJUrr21cc1Xcaoas/Kb9+v4tQMZdDAGwIpgpqT96JAdUmh8NPV9bwCfvH/3Wt16srSlt7Sitq0i99kzvhnUnv/aNy+saUXmINiyvVNlst4glVFJsPmgxdmAB4fwHFUCkkmQKQTEzKSjuNeMLJhIJGyRNqKvSlS/+ZN2Xf+/PVs671AkYHCUKpk+ZduPNN199/bXHjh2/4/bbKzJlCATIkTHiqu6+3vd99I6bPv1el3zBkG1EceX+eBIyDsOFWZh911NaIRLQeO5j/Ls4Ry8WQKNWFng0mx1IJerEZkVRwvMKhl1fiAkALL+legaB8aaWCAAMqBOJyr7ePCK6nrYsobXr1h6dNbPlU5+fn6oslLj+3q2FP/vTF08dG2lqrCQ0pGDipOrjJ/bMm3OFAAnLeKuVcZld/KUYn1HSTRJoK2Gxf6mcx2tcIycSFUxNpsoMF0q9lDJAyhGUIAo8rVmgpbmtNFNeWlrODARI4JCIFqcqXZFErzAwlkqkR82A0orZAihAQUQQFMuohNkguulkipSywgrpV4IlQRPTJ8ys0AkKUVhgR4HWJCKnTwXf/c6e0jKvtSXT2lJVVpb6DePzfxuSuJaj2AQ2U1J3+nQA4IRhpBQCQMR6+uyWynovonw2n6uqrctU1HR1ZQ3XarBseGJH9WOPbQEBYRKUcZD/FVOAKSeJVqHWwhEAixARCgMQiDWkHVMISkoqC4P5BPktNU1aCBCssOt6yBZjradSAhB3CI0i4zguM/ranzJx8uF9hxI16VEzyFIk22O6kq0gMoOAiFZuWaJUo+YYD3hzOAhsxRCSQmBLp44dr69LoDYCLKis5a6z2SNHxza+ftYEe8LCxewf5zMf8OZcyAVgxDl+ZEG2giAlmTLXdcbGOKGRCJWVuqaazVuOWRjIR9ncUHj0wJaDR/pPdTeHAlFkPZG62mRv94mwMKYcn1xiAYyVVRJzuL90awlUQ1WdFm3ijX+cORIRQhBEtlZYkokUBtbVXtpPmcho30GK01VCSBTXQ4igQgDUrhMZCwDMtqWh5dFNTzfVT7XWKi1EJIzF/o8igCRiRJBEVabKHaQLPPILrViqxRJZYw/s3z5tWqUmJkVBxGU17p/+5eUjQ+7YcCE/ZrNj4Vub/yiu3yRKmKxwKp2urmkaHmbfd+OP0d6ujx869fjP9x/YOhJkcer08o9+fObipa1akQJyFGlVqKuXw4d2EcEv1f0xTScEFzTsRcG68tqMnxEjynXjFtAigqSKnU4FlOun/PTY4AgBJdJpcnTEBhUxR4JobGTCwEahQgIECxyJQY2MTI6aOnnq6OCoKRilnThRf+FNSRRnZZSE0lLb4IBWQMUOwhcMB4AWdlAcEADOb960oX1SidbEBh3tZrNq7dojP/7R1scePXC8a6htavqt3c8ZQIQJWBEoQNGuTqXres4NtDa4AOC6dNO7/TVrVpWmUooCL6VRk4n0+nXH+xqStbUgCn2fp8/IvPHGc5OnLSQnXUyMFh9JQBhYIGbXwUd3aueU7l1dinRkwpjaOt9sVlgIKOn6fadPep6nXR2JBQViAgJkEa2147qO1sA2CAuu5yGisXF3YulsmTB4dsBBRUhsQViIJI4Mi+wNIoFOe6nW2iaKxVDjt6QAA8SxhxAiWBChkycOVtXYyirNnFNajWXpm1/bunPv0KSpJUFB/fSerkceusj44z/EQ4rBAqBoBMPAJZnmU6dOzZhGCR+YpbwGS0o8LeiSs3VHd0t7dSrp/uhH+xD41lsbrQ3JjdpaS3ZtOZbL9aU9D0AVddICsXIXiol6IEQH1NTOKeu3PBUVIilmGVCEgQVJAQoClaVL93f1jPYP/68vfyk0piSTdDWZMPTTKRtZGxkTRpveeMNxtGHrJxJhGDqOo4iGz/aODQ1BwMrx2AZESgSQkDl2roCtAEPnhMkZJwVGkMa9y6KHGc8nCwIAGgVfeeWJWXMrSEUmYoXeqy91b98+8Ed/fMOUqYGJ6OTxwre/9frF6OHAxjxlzGyLjDOtb9pLZDQ7FBbCkkyaBJR2WlqaD+0zgEqERcBYue/eA20NpQvmN371b/fd8h57/U2zFi2b9PLr3VdcVV+SRBuZupqklxg+furotLJ6EHWeLx73ZhFFgFBEHKS2+payssrRqJ9chQhiGQmVVjZisUBK1TU0LL1i6bHtx04Pnsnlc+a0xTDIj45u2rojnUqaMHDIESsAlCnPTJjcoV0dcWQFfMRpc6enM6nubC8AifD5+ScgzALMHPLcafMcdgD0eL5BEMSCQVAgStACAbAZHu0/071j3rKEGAssYQQHDuRdX03ozJRlzkQczcgkbrtt+kXgYTkP4gBrZtHKRQUMEQOhaGaOY1DL4RPP/2LP9i0f++BHamsnoE42NM178fkHI0NaietqDCE7wL949dTCZdPnzGp5af3Zpaunz5jf+t1vHTx5AmdO1AShB4XG1mDbjhemTF3JoVVuvDgoodibV1rittVCwHXJ6o6mSdsObWIyygFARtKoFVpgkCBf2H5wd0Nr9eIZl7vaSyVTtSV1dcmyvuPnbnvX7b5LgWEgq9nNBeFla1b9wVf+sGvg5HA41pcfyY0N948NZcnIrsOIigWIYhaLlCZCiIwt98qn1UzT7FMs6GUAsUQSgEUgxwArJ4iyhObg0W3K666paZbAuooixQ0t+uwvsi+9vO+6a2o93y/kk0cOHr2o9cqxJnJdUECIxkqIwAi+iSJHaRtaIROZ0Z4z+2rrBu/7yf+89cbfa524oKKifmgk2dtX6OxwwnzoaLrmuklPP/vCnt3dl12+5A+/eM/3v7nn6MnsqeOju/f3TptRo4QI7WWXVf9/f/WLG67+UFlZGxSbbhXbwQMAF/0jiawpdVLLpi062nV4sHCOHCKt2Ngoa4kcIgRPHT25/+iJAygARMxicraipPa9a26rr64eGexzPS9kG5goC0F6Qs3XH/nB5l2vqzSJo4AZERiZXAAQ5aiYUhQR0iTIjptYOGVeY7pSEwEKQwGJUDSAVkwohIyMIVpNQK+9+PNZMyvSCeUggAA5uHRF/TUHRv72r1/64fdTMybX95zODQ8OXIR/NTTQLTYIc6ENtAmMQgEWFCEEQlbIjqYgHHbdgWVLyxqbxtY99d2x0d5EqmzlqlWbtpw1Bh2XHAVNzYnGOveH39p73w9fCPK511/Zrajntz81c868EiFmFs9VZWletrD22ad/wDwmKhQdoAoADIrECmEEVEiuTniiZjdPbiht1I6PRGIZmBFjHYIACXlKJVClFPrilrqp2kxAeZuAqvJyRWTYBmHoJT3QkqpOnQt7sRwgbdGPMCHiWuUTKiQHRSIsqoHFRgaY0snKZZMWJbVDwEhsIGIQQRIBDUoBQPHYC9196ljXya0zZ2SMCVlwbBQ2v9YT5BLvfd+CL/7PZUuX1wZ2uLUdP/nZ2RcxP/72b75YV5+cM2dOQ/X8uvoJaZUGVALkKI0ApJEZc6Mj3Wd2VZZ3Xrmmce1jXc8+e88NN31+ztzlf/c3X79yDWZSAoCJZHT9za1rHznZOKHi1jtWNzaWtrYnlR5jG0BkYjkJcXTF6uavfu2Z2Zes7Jy6UJDipuxx7tMCgIhGBMsqoqaS+hsvvfYv7t3lKTpP2QgCEQkIqjiba4jIRgXgSELMB6MlpaW5MNCO0top5HJIWFFb0bP9NeUJaEtKmSBCUsyBcooaSVQkIsBKIhvlef7MefNbLlFGAcYMlSegZbx8TDgvEBKq7OjZh37xtTvubC8vt45D+bwZycO3v7tvaHDn4qVtS5d3LFnWqaHgO0EqcTH1g2LPLF12ycmutXt3r82kJ3R0XDpp8rJ0ppbcuAcCmVC6Th4ry3BZ2jqOrFrT+M1/eWLuwmsrK+snT164e9eZxYszaK12ePVVDXMXNJSWeZrA5MKzJ4baJpRYYYUImiwLoiT9/IL56fXP/qyuZYqfqEbQ59krAlCI8Qk8WvsEZk77zPkzl+48thm0RQBAIdIcV2egCDObuO5ZHO2KltGRoXSmnJTjeX4URa5STiLhKhXks66nkTQIKR37dUqsBQBAFGYkxcxodGN5w42Lrk5IiRUAFXeZVyLFTDEQGzaMTMx79j5v+OCUqY2EURgyeY5K8Cc/v2zrxqHXXzr6/LNdU2aWLVtWtWxpXcKVi1ivfG1KM/k1V9TdeGt5++STu/Z+56c/+fLOHesLQS9jNjChgNm2+blF86p8LZ4jVdX2iqvqHnjwG0R4yZwb9+3PBYGvSMAa3wHfs9u2nNUqs3nruX/82t6+c0rQHQtxYJABHOWQ9u3c+eVDIzt2bn9dk0YSILHCLKLjGxJACTESoJPE5K2X3dBQ3orsCBA5cdgQJy0sABChcog0GS6wsudG+xOZEiBtjIhBBaq1pZWtYWPYWBsYjnC8+UrMVgFYINQcAaKT8suuWnRFq18vgqgwPoKGivERCxgLJmRlMd3X071hw89Wrql3lCEWQp0dVv0DNjBhTZMzZ26H4/gPPXj8j7/w+g+/vycyF9NfdN6slTu2vH5da10mY+fMKWnvKDl6ZPC5F/73kWNXrVp5Z2lFTfe5A6dO7vjA+6coypvAKC2TJ3sbNx04eGBbc/P0lzfUHzuG06eICPhK9Z/Lfusbe1FnJs5p/edvHr73gWOLLmt+4vH9tpD/3c/Nr66HMOTKGn3FFTUPP/z1zvbJVdXNoB0gNJY9TMi4bEAUCIBH7sTS5huWXHPfsz8ZyvUIBzEZLiIALCwATEV5J6LSQ9lhL+WbyGgkz/XHxsaSlaXDYYE8LchIOnZnkQSAEQEJrbHF7dKoZYuWr5ix1BdtEAAMgSWID8QRESOIhUhQ+VE+Wrfun1smFDomVUXhmOerwije972DDz1yRIhcN5kq0c0TnKmzWttaMwvnVyi8mPnR2jYnm8V81ipksFF5Cc+dm7z13c0DAxsee/Rb+ZHs5k1Pz51X4qgQSIiQCJLJsLPd27PrpbKKsra2Bbt2BhZIaYUCE1rKp0+pfvihQ9lsWefEqT/4/o4/+9KzW3f1dU6s9H22ll1PsY1mzkgvmp988KffCHIjJmIWVgqFGWI1vYrpIXTQqXAyKycvvWLuFSrwtU6ACCldJDkAUIA51iMgEWVHx3TCIU2ayJgIXSdVVXpuuIccJKVQEaqYoUFhQEXkKtKKyIWQ5k1bfOPia8pVqRJHFAJYihlnMMIhABhG5bjA+Veff2ho5OVVq2pdJ9QKEcHaKJ2mkqTuOxNVldddf8PCz33+6j/4/SV33jFx+vRSR19M572Wzhk9vYnBAQcYXU1grIumqcFcd31lPtjw4APfPHp089yFlQgRR5YUEkFpWs2eUXXu7LZCOHjZ8puOH/e6+5lZIUoywTffPP3IvrNf+uIDWzZvW76s5iN3z77ne9fdcXtLIiUMEAbsEpIprFxe5tDORx/6Z4AQRbE9f4SLBWIlQAJgwUO3SqVvW3TNbatuJaMIdVQoxIwWEBbL0omISATyQS5VlmJkFEYQS5wsL+kf6Y/zqzFxhogiiFjslaG0ywWeNWH2B1fcMiFRnQQfSBOxAo3iALiMGlAzK0QntIXdu55+4+Xv3HxTQ0UFF3IF0oAoJRm69fYJ3/jW1X/y5/Mr64YfeuSF//03jzzz+C7CgLSRi5ofXkkpQ2agFzU5yOJqZGMRTXlVePNtnZu33J9IddXUEosFFGYJIxsGpjSj+/rPZHMDJSXVSxbf9PSzpyMLUWgJuaVFX7FmYmWm/ItfWPalLy+75V31Je5wMoHxCXHaQY4YDSeTwZVXNx878cKmzU9HQQDGZ0JBYTYiDMKKi0JfDLhSl1y9aPX1194kxiql2VpERAJSCIpQISoUYWMjcjCRcJkjrbEQFfyUH5kIEdlEFyRTEEmLBRsasXDJjHl3X3VrZ7rajzAsREICYBUpBOJY7QoamCxD/0D3A/f/01VrOmrKPWCbTKr4xDMiSSRtRU1+zXVVv/tH8z/z+UWTOpqOH86LQnQw5Ivxr0glLpk7/9TpZ2fOKbVWPCfuSigJlES68IXPtClf+Y6NCIAUWwYE0piplNlzU/t27b5s5cIZiy/d8c3q3dtx+mxXKEqlc//jU80iyMSuzoEBCAFkfBViUL5CgiCKahvtRz/W9I2vfTUYHr5s+S1kM0gsxfPiCAHQCiCAQmLVrBvvnHhz7crqh15ee3asC/wIxIowEXHE2tHo6pCDIGGhxMuOhgmi6lTad6Df5sAIuAQAYoUcIxIRkjVcAuWXTl5x95r3ZiTpGx8UuikAZhXZuK2MtRHFJ2Sg6Tmy977v/9FdN6U7p/a5CbIGEJBFUBABXA0QsUZbWsbNi73l8xuMbfAdC4FQdDHrlVZeU/2U0ydHETTGpZ0ERDFvZZsnpOrqPGJ2EV0FDoCyQEZclKba9MkjhxVzRTo155KrN285F0WetQAEpAGJSURYSIl2gRQQCDEAC1gWww6h60A6bW98d9OLG773+saHojBrTGStMYaBhMEaCQAjUkSkCdgDvXLOpR+5+f0T6yYp64OQch0g0J5ma0whG2SzLOCg9h1HTOQkfK+spAChSmrHV4AWSUQQJBEM6/rUxA9c+6E7Vt1Y7iQ8IiEREiRGYu06AIoNsuHc6BgJd53c87MH/nzhZamJU5OkAQW0IhRQmphFAEVAawIC0kIatAfaB1EQGEbvovr7iF9bO/H48bEo4oRGZkYBY0UpIgfEMo1zjWBZCRCgtcISNdRkXnn6BJlIQbBw2c17DmzesXNkwUJPu4ZD63pKbHzIEkrx0DGIFYjCRdKUAFyH2zvgfR9ovedH3+zpNmuuvDaVqVQaIlvQREgWIBb3skJOKd8nXtw8e9Ld7Y9teea5bc/3DncpD5mtCAtbpbQRRkEXKeRIp1ybQBuwtZFWmjShaJNjH0svn3/p7Zfd1JwsS4MTM/iiBRHjy7OEgAKMLvlIwd4dz61b97VLL0/PnJUkJ0DEKG8UkQBEEStNSDG1wtohIrRxg0+XxKLrO8eOBBcxP0ipZLIslXTHxnKkMZZKKiJr4vY3AAhxBM0MlgGIyFWM6Ce9gaFelryQ8dKV1934sRdeOH3uLJsIiNBGLFaKmr7zmoRYFkBxCFg8fTDhQXMz/tZHOg4fffKhh785PNQVhXkserEERY8ThQkNOEY51q1xym+bf+3v3/rpRR1LdCEpoRaLpIg0BWLIQxZjOaSEk40CYyyI4hAl0hTquc3zP3fb73x49Z1NfpUvLltC5YjSCEgWyBKyYrChzZsoH+XGXn3+gSce++srryqfMcvTOgQWMaI1CYJylQWKLBRCa5itCALEV+woBIQg5IFB2vj68EXMDyNGKTWhbcLw0HBtZYpiBSdi/F+CgAU0AoQQhDaXZRAmjY7vsfICykeQ026JZWpomblg/h3PrHvk5lvqK8oisRz7rMACCkXHkkSMZdKEiArAClpWgMJBXa26+8MVjz/y6g+/f+rGmz7Z0DiNlKeUElGxOxQfNWiMVZrAUgVmMhWdbdd//ODA8ae3vbj9yLaR7ABoiBKRX5rMnxlUCQ9dnfBSGOpgTFylZ0yZvWr+imX1s8sTZcZESDaSkDQBOijxkQWMgKBMaAue8oYGzzz9xA9PnXzkpls6WyeQVtZGVmvFzKCBGdnqrtNZ31cVlQ7HzV5DMVaIgBFEQOvEjq2DPd01F5M/J4sKa2qaBvt6ob0UJLJGyEUTxakQymap61z+6NH+fDY+RUJIIYPO5hJBIH19Q1W15QbHkk5y0cIbTx49smXT8ctXlmgKY/2MCIAFo3FkVPZvz/d2jy5YXFldiw4LKQQRtKwBFHFl6diddza8sXHgZz/7vXlz3jd/wXUlmUrBCEmTdgCZYkqc4nSFUpKsSSTKG8snVnfsOHtg48Etu/fvkYIpy5T28UkA8l0fxzgdlVx2ybJlc5ZMbuzIOKlUqB0hUsoiACoCIrYoeUHD5DL6hcCQDbbveeG59d9vahy760OdZaVCEIkFrREVEGIIEoRq06t9f/vXW5Il+o//dMm06RqYSQAZGDCMGDz36IHC3l3wruv/4KLwIEQAdHM5jkWCcX7GAoilruPBxtfPBMY0NpU1dZZnypyET9Zyd3fuXHfU1DT24AN/uWDBDZNmzkmkqsrL6q67+qM/vuf3G5qCKVN1sacDURgaS/rAweyX/uT1ntNjd39sysc/M1m7wCZusI9AACwaWLmyaFG6qcV/et19R49uXbbkzmnT5iuNURQCeqgBxLAlIh3LfW1gXeVUqdLLWubPaZ11euHZg3t3vng22Pv8FiI9o3PG1UtWlVVUdja0+ez44JLFuIiErQhorbQJLWiwgkAohJHl/oFzL637564zG1Zf2dDeXpHyDKHEDZq0VsYyGxaHrMXde3r27h5Ol1D3mfz0GaVsjFIE4yvtcD+tf/bM1Cl3tbVfTD4qTg4zSxAYpFg9jAKUG7N79/Rt29Q3a1bVzNlV6VKlHIiPbxCmhsaMNbhkWfXprsL2rd/Ysat9/uyrJ3ZeVt/Yct31v/PoI3/u+s0d7W5oYoU5WpaE66ZSKp1Rnq8x7uMMQIxFckcArKAG1+HmFrrr7rZDe0cfffgP9+9Zs3DRNfWNU7TnWQ5IKwBgCDU4wKCVQkQlWhlboVNlpRM65lUd27AXQsyUpeZMmXH5zCWxx+WQAgPAQG58/KEfGRbDjkbLQpTgKH/67P5de1/dtuWRmdP4/XdPKK9kpQzF5yUKEoG1AALKISIUj6++bgKAKsk402dmXIeMQWBhBFaYzem1j5+rr1ux+oo7kS7qvAkQEWQmVCAopIgZxob4jdd7TxwfWX3NxI5231FhIQwAUSsEBkSwxjoKy0rQ75AJ7Q3btuTXr/92V9eZ5SuunTpjwfETN7343PNVlY2plPF8iEImlImd/p/+xeLhoXDS9FICERYiJBeKJUlQPO8VCTngpB9Nm4kTJ019dcOe++59o7l58fKVV9U2TQRMApFYILTIiKBBEyqlmCWyLimhZGNNk1JuWIgaqmpdISuMwAJoTORoFxHD0CAQFhtwMAgO9A9seP7xffufam0tfOB9dZWVgXYNKWERpRRbsXFnCBFFKCwk4jrc3uF88GOdROIoBrauq6K8MQrZOhs2nM1np777lt9CnRgZ6b64/CCCgyiOR4bBAQgKsmPrwOGDw9fdPKWqGUwUaEEvoTiWtwuyEe2QiGgCz0VBO2+hmjGv6cknn/zWD3bdcuPnr7jik088jj/98aN33tmhM6HjEAh4vp0920MnYYywEUVIWJQpQ7G4BQCQA3EUKRR0rFbm8jXu6qurt2zee+/PnyaZPmPGmvaOjtYJ7eB75LiKBMQARyQAiphArDtt1iUVVdUNNTWzZ86UMNKOZkIR9pIa2FomxwXBfJDPDQ+N7dqx49DBV44eeW3FqoqPfqKsNJMWzqNlsAJEJuIgC8ePj9XUJsorNCmIGzuQBRJGLZ5GRCAYby6HIEZveCF7cE/NBz72GXS8J576ycZNP/v/AROltkndUdwmAAAAAElFTkSuQmCC';
+const PROF = {};
+const GRADTABS = [['Overview','Overview'],['Academic Status','Academic Status'],['Result Summary','Result Summary'],['Outstanding Courses','Outstanding Courses'],['Eligibility','Eligibility'],['Confirmation','Confirmation'],['Clearance','Clearance'],['Notifications','Notifications']];
+const SIDE = ['Home','Course Registration','Course Form','Exam Pass','O’Level Information','Print Bio Data','Edit Profile','Graduation Status','My Results','ID Card'];
+const profOf = m => PROF[m] || (PROF[m] = {address:'', mobile:''});
+function go(t) { state.activeTab = t; if (t === 'Notifications') markRead(me().m); state.saved = false; if (window.innerWidth < 768) state.menu = false; render(); }
+function toggleMenu() { state.menu = !state.menu; render(); }
+function toggleGrad() { state.grad = !state.grad; if (state.grad) state.activeTab = 'Overview'; render(); }
+function saveProfile() {
+const p = profOf(me().m);
+p.address = document.getElementById('pf-addr').value.trim();
+p.mobile = document.getElementById('pf-mob').value.trim();
+state.saved = true; render();
+}
+function profileCard(s) {
+const p = profOf(s.m), ini = s.n.split(' ').map(w => w[0]).slice(0,2).join('');
+const f = (l,v) => `<div class="py-2"><div class="font-bold text-slate-700 text-sm">${l}</div><div class="text-slate-600 text-sm uppercase break-words">${v || 'Not provided'}</div></div>`;
+return `<div class="border border-slate-200 rounded p-3"><div class="border border-slate-200 h-56 flex items-center justify-center bg-slate-50 mb-3"><div class="w-32 h-32 rounded-full bg-[#4a7ea8] text-white flex items-center justify-center text-4xl font-bold">${ini}</div></div>
+<div class="text-center"><div class="font-bold text-slate-700">Address</div><div class="text-slate-600 text-sm uppercase mb-3">${esc(p.address) || 'Not provided'}</div></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 px-2">${f('Full Name',s.n)}${f('Mobile',esc(p.mobile))}${f('Matric No.',s.m)}${f('Department','Computer Science')}${f('Programme','FCEABK Degree')}${f('Level','400Level')}${f('Session','2025/2026')}</div></div>`;
+}
+function renderStudentMain() {
+const t = state.activeTab, s = me(), inGrad = GRADTABS.some(x => x[0] === t);
+if (t === 'Home') return profileCard(s);
+if (t === 'Print Bio Data') return profileCard(s) + '<button onclick="window.print()" class="mt-4 bg-[#4a7ea8] text-white text-sm px-5 py-2 rounded">Print</button>';
+if (t === 'Edit Profile') { const p = profOf(s.m);
+return `<div class="space-y-4 max-w-xl">${state.saved ? '<div class="bg-emerald-50 text-emerald-700 text-sm px-4 py-2 rounded">Profile updated.</div>' : ''}<div><label class="font-bold text-sm text-slate-700">Address</label><textarea id="pf-addr" rows="3" class="w-full border border-slate-300 rounded px-3 py-2 text-sm mt-1">${esc(p.address)}</textarea></div><div><label class="font-bold text-sm text-slate-700">Mobile</label><input id="pf-mob" value="${esc(p.mobile)}" class="w-full border border-slate-300 rounded px-3 py-2 text-sm mt-1"></div><p class="text-xs text-slate-400">Name, matric number, department and level can only be changed by the school.</p><button onclick="saveProfile()" class="bg-[#4a7ea8] text-white text-sm px-5 py-2 rounded">Save Changes</button></div>`; }
+if (inGrad) return renderTabContent();
+return `<div class="py-16 text-center text-sm text-slate-500">${t} is not included in this prototype.</div>`;
+}
+function renderStudentView() {
+const s = me(), t = state.activeTab || 'Home', inGrad = GRADTABS.some(x => x[0] === t);
+const title = inGrad ? 'Graduation Status' : t === 'Home' ? 'Dashboard' : t;
+const side = SIDE.map(n => {
+const act = n === 'Graduation Status' ? inGrad : n === t;
+const chev = (n === 'Graduation Status' || n === 'My Results' || n === 'ID Card') ? `<span class="ml-auto text-slate-400">${n === 'Graduation Status' && state.grad ? '⌄' : '‹'}</span>` : '';
+const click = n === 'Graduation Status' ? 'toggleGrad()' : `go('${n}')`;
+let h = `<div onclick="${click}" class="flex items-center gap-4 px-4 py-4 cursor-pointer text-[15px] ${act ? 'bg-[#222d32] text-white border-l-4 border-[#4a7ea8]' : 'text-slate-300 border-l-4 border-transparent hover:text-white'}"><span class="w-4 h-4 rounded-full border-2 ${act ? 'border-white' : 'border-slate-300'} shrink-0"></span>${n}${chev}</div>`;
+if (n === 'Graduation Status' && state.grad) h += '<div class="bg-[#1b2428] py-1">' + GRADTABS.map(g => `<div onclick="go('${g[0]}')" class="pl-12 pr-4 py-2.5 text-sm cursor-pointer ${t === g[0] ? 'text-white' : 'text-slate-400 hover:text-white'}">${g[1]}</div>`).join('') + '</div>';
+return h;
+}).join('');
+return `<div style="background:#4a7ea8;padding-top:env(safe-area-inset-top,0px)" class="min-h-screen">
+<div class="flex items-center justify-center gap-0 py-5 px-3"><img src="${CREST}" alt="" class="h-14 w-auto"><span class="text-white font-bold text-2xl sm:text-3xl tracking-tight">EDUCATION365</span></div>
+<div class="flex items-stretch bg-[#528bb9] h-14"><button onclick="toggleMenu()" class="w-14 bg-[#4a7ea8] text-white text-2xl flex items-center justify-center" aria-label="Menu">☰</button><div class="flex-1"></div>${bell()}<button onclick="goToWelcome()" class="text-white text-base px-5 flex items-center gap-2"><span>⏻</span> Log Out</button></div>
+<div class="flex bg-[#ecf0f5] min-h-screen">
+${state.menu ? `<aside class="w-64 shrink-0 bg-[#222d32]"><div class="px-4 py-3.5 text-xs text-slate-500 bg-[#1b2428] tracking-wide">DASHBOARD</div>${side}</aside>` : ''}
+<main class="flex-1 min-w-0 p-4"><div class="bg-white rounded border-t-4 border-slate-300 shadow-sm"><div class="px-5 py-4 text-xl text-slate-600 border-b border-slate-100">${title}</div><div class="p-3 sm:p-5 overflow-x-auto">${renderStudentMain()}</div></div></main></div>${modalHtml()}</div>`;
+}
+// ===== STAFF-SIDE VIEWS =====
+function shell(sub, who, inner) {
+return `<div class="min-h-screen bg-slate-50"><header class="bg-[#0083D6] min-h-16 px-4 md:px-6 py-3 flex items-center justify-between gap-3 shadow-sm">
+<div class="flex items-center gap-2 text-white font-bold tracking-wider"><img src="${CREST}" alt="" class="h-9 w-auto"><span class="text-base">EDUCATION365</span><span class="text-sky-100 font-medium text-xs ml-1 hidden sm:inline">${sub}</span></div>
+<div class="flex items-center gap-3"><div class="text-white text-right leading-tight"><div class="text-xs font-bold">${who[0]}</div><div class="text-[10px] text-sky-100">${who[1]}</div></div>
+<button onclick="goToWelcome()" class="bg-white/15 hover:bg-white/25 text-white text-xs px-3 py-2 rounded flex items-center gap-2"><i class="fa-solid fa-right-from-bracket"></i> Logout</button></div></header>
+<main class="p-4 md:p-8 max-w-5xl mx-auto">${inner}</main></div>`;
+}
+function renderClearanceView() {
+const s = staff(), v = state.clView || 'departments';
+const all = STUDENTS.map(x => statusOf(recs[x.m])), c = k => all.filter(x => x === k).length;
+let b = '';
+if (v === 'departments') {
+b = ttl('Departments','Select a department to view its students and graduation clearance status') + '<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">' + DEPTS.map(d => {
+const cs = d === 'Computer Science';
+return `<div ${cs?'onclick="openDept()"':''} class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 ${cs?'hover:border-brand-blue cursor-pointer':'opacity-60'} flex items-center gap-4"><div class="w-12 h-12 rounded-xl ${cs?'bg-sky-100 text-sky-700':'bg-slate-100 text-slate-400'} flex items-center justify-center text-xl"><i class="fa-solid fa-graduation-cap"></i></div><div><h3 class="font-bold text-slate-900">${d}</h3><p class="text-xs text-slate-500">${cs ? STUDENTS.length+' students · '+c('Eligible')+' Eligible · '+c('Pending')+' Pending' : 'No student records loaded'}</p></div></div>`;
+}).join('') + '</div>';
+} else if (v === 'students') {
+b = `<button onclick="goView('departments')" class="text-xs text-sky-700 mb-4">← Departments</button>` + ttl('Computer Science','Graduation clearance · 2025/2026 session · 400Level')
++ `<div class="flex items-center gap-2 mb-4 text-xs">${badge('Eligible')} <b>${c('Eligible')}</b> ${badge('Pending')} <b>${c('Pending')}</b>${c('Not Eligible')?' '+badge('Not Eligible')+' <b>'+c('Not Eligible')+'</b>':''}</div>`
++ `<div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-x-auto"><table class="w-full text-left text-sm"><thead><tr class="border-b border-slate-100 text-slate-400 text-xs uppercase bg-slate-50/50"><th class="p-3">S/N</th><th class="p-3">Full Name</th><th class="p-3">Matric No</th><th class="p-3">Status</th><th class="p-3"></th></tr></thead><tbody class="divide-y divide-slate-50">`
++ STUDENTS.map((x,i) => `<tr><td class="p-3 text-slate-400">${i+1}</td><td class="p-3 font-semibold text-slate-800">${x.n}</td><td class="p-3 text-slate-600">${x.m}</td><td class="p-3">${badge(statusOf(recs[x.m]))}</td><td class="p-3"><button onclick="openStudent('${x.m}')" class="bg-[#0083D6] text-white text-xs px-3 py-1.5 rounded">Open</button></td></tr>`).join('') + '</tbody></table></div>';
+} else {
+const m = state.sel, st = STUDENTS.find(x => x.m === m), r = recs[m], o = statusOf(r);
+const reqs = REQS.map((q,i) => {
+const ok = s.role === 'Clearance Officer' && s.unit === q.unit;
+return `<div class="border border-slate-200/80 rounded-xl p-4 space-y-2"><div class="flex justify-between gap-2 flex-wrap"><div><div class="font-semibold text-sm text-slate-800">${q.name}</div><div class="text-[11px] text-slate-400">Responsible unit: ${q.unit}</div></div>${badge(r.st[i])}</div>`
++ (ok ? `<div class="flex flex-col sm:flex-row gap-2"><select id="sel${i}" class="border border-slate-200 rounded px-2 py-2 text-xs">${['Met','Pending','Not Met'].map(x => `<option ${x===r.st[i]?'selected':''}>${x}</option>`).join('')}</select><input id="cm${i}" value="${esc(r.cm[i])}" placeholder="Officer comment" class="flex-1 border border-slate-200 rounded px-3 py-2 text-xs"><button onclick="saveReq('${m}',${i})" class="bg-[#0083D6] text-white text-xs px-4 py-2 rounded">Save</button></div>`
+: `<div class="text-xs text-slate-500">${esc(r.cm[i]) || 'No comment'} <span class="text-slate-400">· your unit cannot update this requirement</span></div>`) + '</div>';
+}).join('');
+const fin = s.role === 'Registry Officer'
+? (r.fin ? `<div class="text-xs text-emerald-700 font-semibold">Finalised · Letter ${r.letter}</div>` : `<button onclick="finalise('${m}')" ${o==='Eligible'?'':'disabled'} class="bg-emerald-600 text-white text-xs px-5 py-2.5 rounded-lg ${o==='Eligible'?'':'opacity-40 cursor-not-allowed'}">Give Final Approval</button>${o==='Eligible'?'':'<p class="text-[11px] text-slate-400 mt-2">Only an Eligible record can be approved.</p>'}`)
+: `<p class="text-xs text-slate-500">Final approval is given by the Registry Officer${r.fin?' (done · '+r.letter+')':''}.</p>`;
+b = `<button onclick="goView('students')" class="text-xs text-sky-700 mb-4">← Computer Science students</button>` + ttl(st.n, st.m + ' · Computer Science · 400Level · FCEABK Degree · 2025/2026')
++ `<div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-4"><div class="flex items-center justify-between"><span class="text-xs font-bold uppercase tracking-wider text-slate-400">Overall status</span>${badge(o)}</div>${reqs}<div class="pt-2">${fin}</div></div>`;
+}
+return shell('Clearance Portal', [s.name, s.role], b);
+}
+function renderAdminView() {
+const s = staff(), t = (h, rows) => `<h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mt-6 mb-2">${h}</h3><div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-x-auto"><table class="w-full text-left text-xs"><tbody class="divide-y divide-slate-50">${rows}</tbody></table></div>`;
+const staffRows = Object.keys(STAFF).map(k => `<tr><td class="p-3 font-bold text-sky-700">${k}</td><td class="p-3">${STAFF[k].name}</td><td class="p-3">${STAFF[k].unit}</td><td class="p-3">${STAFF[k].role}</td><td class="p-3">${badge('Met').replace('Met','Active')}</td></tr>`).join('');
+const reqRows = REQS.map(q => `<tr><td class="p-3 font-bold text-sky-700">${q.id}</td><td class="p-3">${q.name}</td><td class="p-3">${q.unit}</td><td class="p-3">Mandatory</td></tr>`).join('');
+const auRows = AUDIT.length ? AUDIT.map(a => `<tr><td class="p-3 text-slate-400">${a.w}</td><td class="p-3 font-bold text-sky-700">${a.a}</td><td class="p-3">${a.t}</td><td class="p-3">${a.o||'—'} → ${a.n}</td></tr>`).join('') : '<tr><td class="p-4 text-slate-400">No audit activity yet. Updates made in the Clearance Portal appear here.</td></tr>';
+return shell('Admin Portal', [s.name, s.role], ttl('System Administration','Manage staff accounts, requirement types and review audit activity') + t('Staff accounts', staffRows) + t('Requirement types', reqRows) + t('Audit log', auRows) + t('Email log (simulated delivery)', emailRows()));
+}
+function renderLecturerView() {
+return shell('Lecturer Portal', ['Lecturer','Staff'], ttl('Lecturer Portal','Courses and score entry') + '<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-sm text-slate-600">Lecturers are not part of the graduation clearance workflow. Requirement updates for students are made by Clearance Officers in the Clearance Portal.</div>');
+}
+function renderDashboardRouter() {
+const t = state.portalType;
+return t === 'Clearance' ? renderClearanceView() : t === 'Admin' ? renderAdminView() : t === 'Lecturer' ? renderLecturerView() : renderStudentView();
+}
+// ===== STUDENT TABS (live from the same records) =====
+function renderTabContentPrev() {
+const t = state.activeTab, s = me(), r = recs[s.m], o = statusOf(r);
+const card = c => `<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 max-w-4xl space-y-4">${c}</div>`;
+const icon = x => x === 'Met' ? '<span class="text-emerald-600 text-lg">✓</span>' : x === 'Pending' ? '<span class="text-amber-500 text-lg">…</span>' : '<span class="text-rose-600 text-lg">✕</span>';
+const ban = o === 'Eligible' ? ['bg-emerald-100 text-emerald-600','ELIGIBLE FOR GRADUATION','text-emerald-700','All requirements are Met.'] : o === 'Pending' ? ['bg-amber-100 text-amber-600','CLEARANCE PENDING','text-amber-700','Some requirements are still being verified.'] : ['bg-rose-100 text-rose-600','NOT ELIGIBLE','text-rose-700','A mandatory requirement is Not Met.'];
+const list = REQS.map((q,i) => `<div class="flex items-center justify-between gap-3 p-3 rounded-xl border border-slate-200/80 bg-slate-50/50"><div class="flex items-center gap-3">${icon(r.st[i])}<div><div class="font-medium text-slate-700 text-sm">${q.name}</div><div class="text-[11px] text-slate-400">${q.unit}${r.cm[i] ? ' · ' + esc(r.cm[i]) : ''}</div></div></div>${badge(r.st[i])}</div>`).join('');
+if (t === 'Overview') {
+const f = (l,v) => `<div><span class="text-xs text-slate-400 block">${l}</span><span class="font-bold text-slate-800 text-base">${v}</span></div>`;
+return ttl('Graduation Status','Check your clearance status and requirements')
++ `<div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-3 mb-6 max-w-4xl"><div class="w-8 h-8 rounded-full ${ban[0]} flex items-center justify-center">●</div><div><h3 class="text-sm font-bold ${ban[2]}">${ban[1]}</h3><p class="text-[11px] text-slate-500">${ban[3]}${o==='Eligible'&&!r.fin?' Awaiting final approval by the Registry Officer.':''}</p></div></div>`
++ card(`<h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Student Information</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12 text-sm">${f('Full Name',s.n)}${f('Session','2025/2026')}${f('Matric Number',s.m)}${f('Department','Computer Science')}${f('Programme','FCEABK Degree')}${f('Level','400Level')}</div><button onclick="changeTab('Academic Status')" class="bg-[#0083D6] hover:bg-sky-600 text-white text-xs font-medium px-5 py-2.5 rounded-lg shadow-sm">View Details →</button>`);
+}
+if (t === 'Academic Status') {
+const n = k => r.st.filter(x => x === k).length, pct = Math.round(n('Met') / REQS.length * 100);
+return ttl('Academic Status','Your requirements at a glance') + card(`<div class="grid grid-cols-3 gap-4 text-center">${['Met','Pending','Not Met'].map(k => `<div class="bg-sky-50/70 border border-sky-100 p-4 rounded-xl"><span class="text-xs text-slate-500 block">${k}</span><span class="text-2xl font-bold text-sky-700">${n(k)}</span></div>`).join('')}</div><div class="flex justify-between text-xs font-semibold text-slate-700"><span>Requirements completed</span><span>${pct}%</span></div><div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden"><div class="bg-emerald-600 h-full rounded-full" style="width:${pct}%"></div></div>`);
+}
+if (t === 'Result Summary') return ttl('Result Summary','Requirement status with officer comments') + card(list);
+if (t === 'Outstanding Courses') {
+const x = r.st[2];
+return ttl('Outstanding Courses','Course(s) you still need to complete') + card(`<div class="text-center py-6 space-y-3"><div class="text-4xl">${icon(x)}</div><h3 class="text-lg font-bold text-slate-800">${x === 'Met' ? 'No Outstanding Courses' : x === 'Pending' ? 'Verification in progress' : 'Outstanding courses found'}</h3><p class="text-xs text-slate-500">${esc(r.cm[2]) || 'Your courses have been verified.'}</p></div>`);
+}
+if (t === 'Eligibility') return ttl('Graduation Eligibility','Eligibility checklist') + card(`<div class="space-y-3">${list}</div><div class="bg-[#0083D6] text-white p-4 rounded-xl flex items-center justify-between gap-3"><div><div class="font-bold text-sm">${ban[1]}</div><div class="text-[11px] text-sky-100">${ban[3]}</div></div><button onclick="changeTab('Confirmation')" class="bg-white text-[#0083D6] text-xs font-bold px-4 py-2 rounded">Confirm Status</button></div>`);
+if (t === 'Confirmation') return r.fin
+? card(`<div class="text-center space-y-4"><div class="w-20 h-20 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-3xl mx-auto border-4 border-emerald-100">✓</div><h3 class="text-xl font-bold text-slate-900">Final Approval Given</h3><p class="text-xs text-slate-500">The Registry Officer has approved your graduation eligibility.</p><div class="bg-sky-50/70 border border-sky-100 p-4 rounded-xl max-w-xl mx-auto grid grid-cols-1 sm:grid-cols-3 text-left gap-4 text-sm"><div><span class="text-xs text-slate-400 block">Letter No</span><b>${r.letter}</b></div><div><span class="text-xs text-slate-400 block">Verification Code</span><b>${r.code}</b></div><div><span class="text-xs text-slate-400 block">Date Approved</span><b>${r.finAt}</b></div></div></div>`)
+: card(`<div class="text-center py-6 space-y-2"><h3 class="text-lg font-bold text-slate-800">Awaiting Final Approval</h3><p class="text-xs text-slate-500">${o === 'Eligible' ? 'All requirements are Met. The Registry Officer has not yet given final approval.' : 'Your status must be Eligible before the Registry Officer can approve it.'}</p></div>`);
+if (t === 'Clearance') return ttl('Graduation Status Letter','Download your official letter') + card(r.letter
+? `<div class="text-center py-6 space-y-3"><h3 class="text-base font-bold text-slate-800">Letter ${r.letter} is ready</h3><button onclick="alert('Downloading Graduation Status Letter...')" class="bg-[#0083D6] text-white text-xs font-medium px-6 py-2.5 rounded-lg">Download Letter</button></div>`
+: `<div class="text-center py-6 text-sm text-slate-500">Your letter is generated only after the Registry Officer gives final approval.</div>`);
+if (t === 'Notifications') { const ns = NOTES.filter(n => n.m === s.m);
+return ttl('Notifications','Updates about your graduation status') + card(ns.length ? ns.map(n => `<div class="p-3 rounded-xl border border-slate-200/80 bg-slate-50/50"><div class="text-sm text-slate-700">${n.msg}</div><div class="text-[11px] text-slate-400 mt-1">${n.w} · In-portal</div></div>`).join('') : '<p class="text-sm text-slate-500">No notifications yet.</p>'); }
+return renderTabContentOld();
+}
+// ===== RESULTS DATA (42 courses, 140 units, seeded random scores) =====
+const YEARS = [[10,33],[10,34],[11,36],[11,37]];
+const OUTC = {'25/300149':[['CSC 212','Data Structures and Algorithms I'],['CSC 321','Operating Systems I']],'25/300175':[['CSC 223','Discrete Structures'],['CSC 314','Database Management Systems']]};
+const rng = seed => { let a = seed; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; };
+const gp = x => x >= 70 ? 5 : x >= 60 ? 4 : x >= 50 ? 3 : x >= 45 ? 2 : x >= 40 ? 1 : 0;
+const RES = {};
+STUDENTS.forEach(s => {
+const R = rng(parseInt(s.m.replace('/',''))), ab = 58 + R() * 18, yrs = [], outs = [];
+let tu = 0, pu = 0, pts = 0;
+YEARS.forEach((y,yi) => {
+const n = y[0], base = Math.floor(y[1] / n), rem = y[1] % n; let pass = 0;
+for (let i = 0; i < n; i++) {
+const u = base + (i < rem ? 1 : 0); let sc = Math.max(42, Math.min(94, Math.round(ab + (R() - .5) * 26)));
+const oc = OUTC[s.m] && (yi === 1 || yi === 2) && i === 6 ? OUTC[s.m][yi - 1] : null;
+if (oc) { sc = Math.round(22 + R() * 16); outs.push({code:oc[0], title:oc[1], level:(yi+1)+'00L', units:u}); }
+tu += u; pts += gp(sc) * u; if (sc >= 40) { pass++; pu += u; }
+}
+yrs.push({y:yi+1, n:n, pass:pass, out:n-pass});
+});
+RES[s.m] = {yrs:yrs, outs:outs, tu:tu, pu:pu, cgpa:(pts / tu).toFixed(2)};
+});
+// ===== NOTIFICATIONS (in-portal + simulated email) =====
+const EMAILS = []; let nid = 0, cidSeq = 4564;
+const today = () => new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+const emailOf = m => m.replace('/','') + '@students.fce.demo';
+const unreadFor = m => NOTES.filter(n => n.m === m && !n.read);
+function markRead(m) { NOTES.forEach(n => { if (n.m === m) n.read = true; }); }
+function notify(m, title, msg, email) {
+const n = {id:++nid, m:m, title:title, msg:msg, w:NOW(), email:!!email, read:false};
+NOTES.unshift(n);
+if (email) EMAILS.unshift({id:n.id, to:emailOf(m), subject:title, body:msg, w:n.w});
+return n;
+}
+function statusNotify(m, nw) {
+const r = recs[m];
+if (nw === 'Eligible') {
+if (!r.cid) { r.cid = 'GRD-2026-' + String(cidSeq++).padStart(6,'0'); r.cdate = today(); }
+notify(m, 'Graduation Result Confirmation', 'Congratulations! You are eligible for graduation. All requirements have been successfully met. Confirmation ID: ' + r.cid + '.', true);
+} else notify(m, 'Graduation status update', 'Your graduation eligibility status is now: ' + nw + '.', false);
+}
+STUDENTS.forEach(s => {
+const r = recs[s.m], o = statusOf(r);
+if (o !== 'Eligible') {
+notify(s.m, 'Graduation status update', 'Your graduation eligibility status is now: ' + o + '.', false);
+if (RES[s.m].outs.length) notify(s.m, 'Outstanding courses', 'You have ' + RES[s.m].outs.length + ' outstanding courses: ' + RES[s.m].outs.map(c => c.code + ' (' + c.level + ')').join(' and ') + '. Please clear them to complete your graduation requirements.', false);
+} else statusNotify(s.m, 'Eligible');
+});
+function openNotes() { state.grad = true; state.activeTab = 'Notifications'; markRead(me().m); state.modal = null; if (window.innerWidth < 768) state.menu = false; render(); }
+function closeModal(goNotes) { markRead(me().m); state.modal = null; if (goNotes) { openNotes(); return; } render(); }
+function showEmail(id) { state.modal = {t:'email', id:id}; render(); }
+function bell() { const c = unreadFor(me().m).length; return `<button onclick="openNotes()" class="text-white text-xl px-4 relative" aria-label="Notifications">🔔${c ? `<span class="absolute top-2 right-2 bg-rose-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">${c}</span>` : ''}</button>`; }
+function modalHtml() {
+if (!state.modal) return '';
+let inner;
+if (state.modal.t === 'email') {
+const e = EMAILS.find(x => x.id === state.modal.id); if (!e) return '';
+inner = `<div class="text-[11px] text-slate-400 mb-3">Simulated email preview</div><div class="text-xs text-slate-500 space-y-1 border-b border-slate-100 pb-3 mb-3"><div><b>From:</b> Federal College of Education, Abeokuta &lt;no-reply@fce.demo&gt;</div><div><b>To:</b> ${e.to}</div><div><b>Date:</b> ${e.w}</div><div><b>Subject:</b> ${e.subject}</div></div><div class="text-sm text-slate-700 space-y-3"><p>Dear Student,</p><p>${e.body}</p><p class="text-slate-500">Log in to the Student Portal to view the full details.<br>Registry, FCE Abeokuta</p></div><button onclick="state.modal=null;render()" class="mt-5 bg-[#4a7ea8] text-white text-sm px-5 py-2 rounded">Close</button>`;
+} else {
+const n = unreadFor(me().m)[0]; if (!n) return '';
+inner = `<div class="flex items-center gap-2 mb-3"><span class="text-2xl">🔔</span><span class="font-bold text-slate-800">New notification${unreadFor(me().m).length > 1 ? 's (' + unreadFor(me().m).length + ')' : ''}</span></div><div class="font-semibold text-slate-800 text-sm">${n.title}</div><p class="text-sm text-slate-600 mt-1">${n.msg}</p><div class="flex gap-2 mt-3"><span class="text-[11px] bg-sky-100 text-sky-700 px-2 py-0.5 rounded-full">In-portal</span>${n.email ? '<span class="text-[11px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">Email sent to ' + emailOf(n.m) + '</span>' : ''}</div><div class="flex gap-2 mt-5"><button onclick="closeModal(true)" class="bg-[#4a7ea8] text-white text-sm px-5 py-2 rounded">View notifications</button><button onclick="closeModal(false)" class="border border-slate-300 text-slate-600 text-sm px-5 py-2 rounded">Dismiss</button></div>`;
+}
+return `<div class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"><div class="bg-white rounded-xl shadow-xl w-full max-w-md p-6 max-h-[90vh] overflow-y-auto">${inner}</div></div>`;
+}
+function emailRows() {
+return EMAILS.length ? EMAILS.map(e => `<tr><td class="p-3 text-slate-400">${e.w}</td><td class="p-3 font-bold text-sky-700">${e.to}</td><td class="p-3">${e.subject}</td><td class="p-3">${badge('Met').replace('Met','Sent')}</td></tr>`).join('') : '<tr><td class="p-4 text-slate-400">No emails sent yet.</td></tr>';
+}
+// ===== GRADUATION PAGES (match the design mock-ups) =====
+function renderTabContent() {
+const t = state.activeTab, s = me(), r = recs[s.m], o = statusOf(r), d = RES[s.m], oc = d.outs.length;
+const head = (h,p) => `<h1 class="text-2xl font-bold text-slate-900 tracking-tight">${h}</h1><p class="text-xs text-slate-500 mt-0.5 mb-5">${p}</p>`;
+const card = c => `<div class="bg-white p-5 sm:p-6 rounded-3xl shadow-sm border border-slate-100 max-w-4xl space-y-5">${c}</div>`;
+const bar = c => `<div class="bg-[#0087BC] text-white rounded-lg px-5 py-4 flex items-center gap-3 text-sm font-medium">${c}</div>`;
+const tick = ok => `<span class="w-7 h-7 shrink-0 rounded-full ${ok ? 'bg-lime-400 text-emerald-900' : 'bg-amber-300 text-amber-900'} flex items-center justify-center text-sm font-bold">${ok ? '✓' : '!'}</span>`;
+const ban = o === 'Eligible' ? ['bg-emerald-500','ELIGIBLE FOR GRADUATION','text-emerald-600','You have successfully completed all requirements for your programme','✓'] : o === 'Pending' ? ['bg-amber-400','CLEARANCE PENDING','text-amber-600','Some requirements are still being verified','…'] : ['bg-rose-500','NOT ELIGIBLE','text-rose-600','A mandatory requirement is not yet met','✕'];
+if (t === 'Overview') {
+const f = (l,v) => `<div><div class="text-sm text-slate-500">${l}</div><div class="font-bold text-slate-900">${v}</div></div>`;
+return head('Graduation Result Confirmation','Check your academic completion status and confirm your eligibility for graduation')
++ `<div class="bg-white rounded-2xl shadow-sm border border-slate-100 px-5 py-4 flex items-center gap-3 mb-5 max-w-3xl"><span class="w-9 h-9 rounded-full ${ban[0]} text-white flex items-center justify-center font-bold">${ban[4]}</span><div><div class="font-bold ${ban[2]}">${ban[1]}</div><div class="text-[11px] text-slate-500">${ban[3]}</div></div></div>`
++ `<div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 sm:p-6 max-w-3xl mb-5"><div class="font-bold text-slate-900 mb-4">Student Information</div><div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5">${f('Full Name',s.n)}${f('Session','2025/2026')}${f('Matric Number',s.m)}${f('Department','Computer Science')}${f('Programme','FCEABK Degree')}${f('Programme Status','Final Year')}${f('Level','400Level')}</div></div>`
++ `<button onclick="go('Academic Status')" class="bg-[#0087BC] text-white text-sm font-bold px-5 py-2.5 rounded">View Details →</button>`;
+}
+if (t === 'Academic Status') {
+const pct = Math.round(d.pu / d.tu * 100), tile = (l,v) => `<div class="bg-sky-100/80 border border-sky-300 rounded-xl p-4 min-w-[8rem] flex-1"><div class="text-sm font-bold text-slate-800">${l}</div><div class="text-3xl font-bold text-[#0087BC] mt-2">${v}</div></div>`;
+return head('Academic Status','Your academic completion status at a glance') + card(`<div class="font-bold text-slate-900">Academic Requirements</div><div class="flex flex-wrap gap-3">${tile('Total Courses',42)}${tile('Courses Passed',42 - oc)}${tile('Outstanding Courses',oc)}${tile('Carryover Courses',oc)}${tile('Total Unit Completed',d.pu)}</div><div class="font-bold text-slate-900">Academic Completion</div><div class="flex items-center gap-3"><div class="flex-1 bg-slate-200 h-4 rounded-full overflow-hidden"><div class="${oc ? 'bg-amber-500' : 'bg-emerald-600'} h-full rounded-full" style="width:${pct}%"></div></div><b class="text-sm">${pct}%</b></div>` + bar(oc ? `<span class="text-amber-300 text-xl">!</span> ${oc} outstanding courses must be cleared.` : '<span class="text-lime-300 text-xl">✓</span> All Academic Requirements have been met.'));
+}
+if (t === 'Result Summary') {
+const rows = d.yrs.map(y => `<tr class="border-b border-slate-50"><td class="p-3 font-bold text-[#0087BC]">YEAR ${y.y}</td><td class="p-3 text-center font-bold text-[#0087BC]">${y.n}</td><td class="p-3 text-center font-bold text-[#0087BC]">${y.pass}</td><td class="p-3 text-center font-bold text-[#0087BC]">${y.out}</td><td class="p-3 text-center"><span class="${y.out ? 'bg-amber-500' : 'bg-emerald-600'} text-white text-xs font-bold px-3 py-1 rounded-md">${y.out ? 'Incomplete' : 'Completed'}</span></td></tr>`).join('');
+const st = (l,v) => `<div class="px-4 py-3"><div class="text-sm font-bold text-slate-800">${l}</div><div class="text-3xl font-bold text-slate-900">${v}</div></div>`;
+return head('Result Summary','A breakdown of your results across all semesters')
++ `<div class="bg-white rounded-2xl shadow-sm border border-slate-100 max-w-4xl overflow-x-auto mb-5"><table class="w-full text-left text-sm"><thead><tr class="bg-sky-50 text-slate-900"><th class="p-3">Semester</th><th class="p-3 text-center">Courses</th><th class="p-3 text-center">Passed</th><th class="p-3 text-center">Outstanding</th><th class="p-3 text-center">Status</th></tr></thead><tbody>${rows}</tbody></table></div>`
++ `<div class="bg-white rounded-2xl shadow-sm border border-slate-100 max-w-4xl"><div class="px-4 pt-4 text-xl font-bold text-slate-900">Final Summary</div><div class="grid grid-cols-2 md:grid-cols-4 bg-slate-50/60 mt-3 divide-x divide-slate-200">${st('Total Unit',d.tu)}${st('Unit Passed',d.pu)}${st('Outstanding Unit',d.tu - d.pu)}${st('CGPA',d.cgpa)}</div></div>`;
+}
+if (t === 'Outstanding Courses') {
+const list = oc ? `<div class="overflow-x-auto"><table class="w-full text-left text-sm"><thead><tr class="bg-sky-50"><th class="p-3">Code</th><th class="p-3">Course Title</th><th class="p-3">Level</th><th class="p-3">Units</th></tr></thead><tbody>${d.outs.map(c => `<tr class="border-b border-slate-50"><td class="p-3 font-bold text-[#0087BC]">${c.code}</td><td class="p-3">${c.title}</td><td class="p-3">${c.level}</td><td class="p-3">${c.units}</td></tr>`).join('')}</tbody></table></div>` : '';
+return head('Outstanding Courses','View any Course(s) you still need to Complete') + card(`<div class="flex flex-col sm:flex-row items-center justify-center gap-6 py-6"><span class="w-28 h-28 rounded-full ${oc ? 'bg-amber-100 border-amber-300 text-amber-600' : 'bg-lime-100 border-lime-300 text-emerald-700'} border-8 flex items-center justify-center text-5xl font-bold">${oc ? '!' : '✓'}</span><div class="text-center sm:text-left"><div class="text-2xl font-bold text-slate-900">${oc ? oc + ' Outstanding Courses' : 'No Outstanding Courses'}</div><p class="text-sm font-semibold text-slate-400 mt-2 max-w-xs">${oc ? 'You still need to complete the courses listed below.' : 'You have successfully Completed all required courses for your programme'}</p></div></div>${list}` + bar(`<span class="${oc ? 'text-amber-300' : 'text-lime-300'} text-lg">${oc ? '!' : '✓'}</span> Outstanding Courses: <b class="${oc ? 'text-amber-300' : 'text-lime-300'}">${oc}</b>`));
+}
+if (t === 'Eligibility') {
+const items = [['Final Examination Completed',true],['All required courses completed',oc === 0],['No outstanding/carryover courses',oc === 0],['Required credit unit units completed',d.pu === d.tu],['Academic results processed',r.st[1] === 'Met'],['Departmental requirements satisfied',r.st[0] === 'Met' && r.st[2] === 'Met'],['Graduation status verified',o === 'Eligible']];
+return head('Graduation Eligibility','Check if you meet all the requirements for graduation') + card(`<div class="font-bold text-slate-900">Eligibility Checklist</div><div class="space-y-2.5">${items.map(i => `<div class="flex items-center gap-3 border border-slate-400 rounded-xl px-3 py-2.5 bg-slate-50/50">${tick(i[1])}<span class="font-bold text-sm text-slate-900">${i[0]}</span></div>`).join('')}</div>`)
++ `<div class="bg-[#0087BC] text-white rounded-xl px-5 py-5 flex items-center gap-4 max-w-4xl mt-5"><span class="text-5xl">${o === 'Eligible' ? '🏆' : '⏳'}</span><div><div class="text-lg sm:text-xl font-bold">${o === 'Eligible' ? 'YOU ARE ELIGIBLE FOR GRADUATION' : 'YOU ARE NOT YET ELIGIBLE FOR GRADUATION'}</div><div class="text-sm">${o === 'Eligible' ? 'All requirements have been successfully met.' : 'Some requirements have not yet been met.'}</div></div></div>`;
+}
+if (t === 'Confirmation') return o === 'Eligible'
+? card(`<div class="text-center space-y-3"><div class="text-3xl tracking-widest">🎉</div><div class="w-20 h-20 rounded-full bg-lime-100 border-4 border-lime-300 text-emerald-700 flex items-center justify-center text-4xl font-bold mx-auto">✓</div><h2 class="text-2xl font-bold text-slate-900">Confirmation Successful!</h2><p class="text-sm text-slate-400">Your graduation status has been successfully confirmed.</p></div><div class="bg-sky-50 rounded-lg px-5 py-4 grid grid-cols-1 sm:grid-cols-2 gap-4"><div><div class="text-sm text-slate-400">Confirmation ID</div><div class="font-bold text-lg text-slate-800">${r.cid}</div></div><div><div class="text-sm text-slate-400">Date Confirmed</div><div class="font-bold text-lg text-slate-800">${r.cdate}</div></div></div><div class="max-w-md mx-auto space-y-3"><button onclick="alert('Downloading confirmation...')" class="w-full bg-[#0087BC] text-white text-sm py-3 rounded">Download Confirmation</button><button onclick="go('Clearance')" class="w-full border border-sky-600 text-sky-700 font-bold text-sm py-3 rounded">Go to the Clearance Tab</button></div>`)
+: card(`<div class="text-center py-8 space-y-2"><h2 class="text-xl font-bold text-slate-800">Confirmation not available yet</h2><p class="text-sm text-slate-500">Graduation confirmation is issued only to Eligible students. Your status is currently <b>${o}</b>.</p></div>`);
+if (t === 'Notifications') { const ns = NOTES.filter(n => n.m === s.m);
+return head('Notifications','Updates about your graduation status, sent to your portal and email') + card(ns.length ? ns.map(n => `<div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50"><div class="font-bold text-sm text-slate-800">${n.title}</div><div class="text-sm text-slate-600 mt-1">${n.msg}</div><div class="flex flex-wrap items-center gap-2 mt-2 text-[11px]"><span class="text-slate-400">${n.w}</span><span class="bg-sky-100 text-sky-700 px-2 py-0.5 rounded-full">In-portal</span>${n.email ? `<button onclick="showEmail(${n.id})" class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">Email · view</button>` : ''}</div></div>`).join('') : '<p class="text-sm text-slate-500">No notifications yet.</p>'); }
+return renderTabContentPrev();
+}
+function renderClearanceViewOld() {
+const units = [
+['Department', 'Computer Science Education', 'Cleared'],
+['School Library', 'Return of borrowed books', 'Cleared'],
+['Bursary', 'Payment of all fees and dues', 'Cleared'],
+['Student Affairs', 'Hostel and welfare clearance', 'Pending'],
+['Sports Unit', 'Return of sports equipment', 'Cleared'],
+['Alumni Office', 'Alumni registration', 'Pending']
+];
+const cleared = units.filter(u => u[2] === 'Cleared').length;
+const pct = Math.round(cleared / units.length * 100);
+const rows = units.map(u => `
+<tr>
+<td class="p-3 font-bold text-sky-700">${u[0]}</td>
+<td class="p-3 text-slate-600">${u[1]}</td>
+<td class="p-3"><span class="${u[2] === 'Cleared' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'} text-xs px-3 py-1 rounded-full font-medium">${u[2]}</span></td>
+</tr>`).join('');
+return `
+<div class="min-h-screen bg-slate-50">
+<header class="bg-[#0083D6] h-16 px-6 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-2 text-white font-bold text-lg tracking-wider">
+<div class="w-7 h-7 bg-amber-400 rounded-full flex items-center justify-center text-emerald-900 text-xs"><i class="fa-solid fa-graduation-cap"></i></div>
+EDUCATION365 <span class="text-sky-100 font-medium text-sm ml-2">Clearance Portal</span>
+</div>
+<button onclick="goToWelcome()" class="bg-white/15 hover:bg-white/25 text-white text-xs px-4 py-2 rounded flex items-center gap-2"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+</header>
+<main class="p-6 md:p-8 max-w-4xl mx-auto">
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight">Student Clearance</h1>
+<p class="text-xs text-slate-500 mt-0.5 mb-6">Track your clearance approval across all units</p>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-semibold text-slate-700"><span>Clearance Progress</span><span>${cleared} of ${units.length} units (${pct}%)</span></div>
+<div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden"><div class="bg-emerald-600 h-full rounded-full" style="width: ${pct}%"></div></div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse text-sm">
+<thead><tr class="border-b border-slate-100 text-slate-400 text-xs uppercase bg-slate-50/50"><th class="p-3 font-semibold">Unit</th><th class="p-3 font-semibold">Requirement</th><th class="p-3 font-semibold">Status</th></tr></thead>
+<tbody class="divide-y divide-slate-50">${rows}</tbody>
+</table>
+</div>
+<button onclick="alert('Downloading clearance form...')" class="bg-[#0083D6] hover:bg-sky-600 text-white text-xs font-medium px-6 py-2.5 rounded-lg shadow-sm">Download Clearance Form</button>
+</div>
+</main>
+</div>`;
+}
+
+// Action Handlers
+function selectPortal(type) {
+state.portalType = type;
+state.currentView = 'login';
+render();
+}
+function handleLogin(event) {
+event.preventDefault();
+const f = document.querySelector('form input[type=text]'), v = f ? f.value.trim().toUpperCase() : '';
+if (state.portalType === 'Student') {
+const pw = document.querySelector('form input[type=password]'), stu = STUDENTS.find(x => x.m === v);
+if (!stu || !pw || pw.value.trim().toUpperCase() !== stu.n.split(' ')[0]) { state.loginError = {p:'Student', msg:'Invalid matric number or password. Please check your details and try again.'}; render(); return; }
+state.matric = v; state.activeTab = 'Home'; state.menu = window.innerWidth >= 768; state.grad = false; state.loginError = null; state.modal = unreadFor(v).length ? {t:'login'} : null; }
+else if (state.portalType === 'Clearance') { state.staffId = STAFF[v] && STAFF[v].role !== 'Administrator/ICT' ? v : 'ACA001'; state.clView = 'departments'; }
+else if (state.portalType === 'Admin') { state.staffId = 'ICT001'; }
+state.currentView = 'dashboard';
+render();
+}
+function changeTab(tabName) {
+state.activeTab = tabName;
+render();
+}
+function goToWelcome() {
+state.currentView = 'welcome';
+render();
+}
+// Initialize App on load
+window.onload = render;
+</script>
+</body>
+</html>
